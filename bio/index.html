@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>JAY ABO · 상품 카탈로그</title>
+<meta name="description" content="JAY ABO의 추천 상품 · 후기 · 카톡 상담">
+<meta property="og:title" content="JAY ABO · 상품 카탈로그">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<style>
+:root {
+  --brand: #002855;
+  --brand-2: #003d82;
+  --accent: #ff6b35;
+  --bg: #f7f8fb;
+  --card: #ffffff;
+  --border: #e5e7eb;
+  --text: #111827;
+  --muted: #6b7280;
+  --success: #10b981;
+  --kakao: #fee500;
+  --kakao-text: #191919;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --border: #334155;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+  }
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.55;
+  -webkit-tap-highlight-color: transparent;
+}
+img { max-width: 100%; height: auto; display: block; }
+
+.container {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 16px 60px;
+}
+
+/* 헤더 */
+header.profile {
+  padding: 32px 20px 24px;
+  text-align: center;
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  color: white;
+}
+header.profile .avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  margin: 0 auto 16px;
+  display: grid;
+  place-items: center;
+  font-size: 42px;
+}
+header.profile h1 {
+  font-size: 22px;
+  font-weight: 700;
+}
+header.profile .handle {
+  font-size: 14px;
+  opacity: 0.85;
+  margin-top: 4px;
+}
+header.profile .bio {
+  margin-top: 12px;
+  font-size: 14px;
+  opacity: 0.95;
+  line-height: 1.6;
+  padding: 0 12px;
+}
+
+/* 후원자 번호 상시 카드 */
+.sponsor-strip {
+  background: linear-gradient(135deg, #fff7ed, #ffedd5);
+  border: 2px solid var(--accent);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin: 20px 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+@media (prefers-color-scheme: dark) {
+  .sponsor-strip {
+    background: linear-gradient(135deg, #431407, #7c2d12);
+    color: white;
+  }
+}
+.sponsor-strip:active { transform: scale(0.99); }
+.sponsor-strip .icon { font-size: 24px; }
+.sponsor-strip .body { flex: 1; }
+.sponsor-strip .label {
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.sponsor-strip .num {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--brand);
+  letter-spacing: 1px;
+  font-variant-numeric: tabular-nums;
+}
+@media (prefers-color-scheme: dark) {
+  .sponsor-strip .num { color: #fdba74; }
+}
+.sponsor-strip .copy-btn {
+  padding: 8px 14px;
+  background: var(--brand);
+  color: white;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  border: none;
+}
+
+/* CTA 상단 카톡 버튼 */
+.cta-kakao-top {
+  display: block;
+  background: var(--kakao);
+  color: var(--kakao-text);
+  padding: 14px;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: 700;
+  text-decoration: none;
+  margin-bottom: 24px;
+  transition: transform 0.15s;
+}
+.cta-kakao-top:active { transform: scale(0.99); }
+.cta-kakao-top small {
+  display: block;
+  font-weight: 500;
+  font-size: 12px;
+  margin-top: 3px;
+  opacity: 0.75;
+}
+
+/* 섹션 제목 */
+.section-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 1px;
+  margin: 24px 0 12px;
+  text-transform: uppercase;
+}
+
+/* 상품 진열 (2열 그리드) */
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.product-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--text);
+  transition: transform 0.15s, box-shadow 0.15s;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.product-card:hover {
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+.product-card:active { transform: scale(0.98); }
+.product-card .thumb {
+  aspect-ratio: 1 / 1;
+  background: linear-gradient(135deg, #eef2f7, #dbe4ee);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  position: relative;
+}
+@media (prefers-color-scheme: dark) {
+  .product-card .thumb {
+    background: linear-gradient(135deg, #334155, #1e293b);
+  }
+}
+.product-card .thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.product-card .thumb-placeholder {
+  font-size: 42px;
+  color: var(--brand);
+  opacity: 0.35;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+@media (prefers-color-scheme: dark) {
+  .product-card .thumb-placeholder { color: #93c5fd; opacity: 0.5; }
+}
+.product-card .num-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: var(--brand);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+.product-card .body {
+  padding: 12px 12px 14px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.product-card .name {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--text);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.product-card .cat {
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 500;
+}
+.product-card .desc {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* 화면 좁을 때 1열로 폴백 (선택) */
+@media (max-width: 359px) {
+  .product-list { grid-template-columns: 1fr; }
+}
+
+/* 빈 상태 */
+.empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* 푸터 */
+footer {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.7;
+}
+
+/* 토스트 */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(120%);
+  background: var(--text);
+  color: var(--bg);
+  padding: 14px 22px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+  z-index: 100;
+  pointer-events: none;
+}
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+}
+</style>
+</head>
+<body>
+
+<header class="profile">
+  <div class="avatar">👤</div>
+  <h1>JAY ABO</h1>
+  <div class="handle">@jayabo</div>
+  <div class="bio">매일 소개하는 검증 제품·리얼 후기<br>궁금하신 점은 언제든 카톡·DM으로 편하게</div>
+</header>
+
+<div class="container">
+
+  <!-- 후원자 번호 상시 카드 -->
+  <div class="sponsor-strip" onclick="copySponsor()">
+    <div class="icon">📌</div>
+    <div class="body">
+      <div class="label">회원가입 후원자 번호</div>
+      <div class="num" id="sponsorNum">7027465675</div>
+    </div>
+    <button class="copy-btn" onclick="event.stopPropagation(); copySponsor()">복사</button>
+  </div>
+
+  <!-- 상단 카톡 CTA -->
+  <a href="https://open.kakao.com/o/YOUR_OPENCHAT" class="cta-kakao-top" onclick="trackClick('kakao_top')">
+    💬 카톡 오픈채팅으로 상담·간편가입
+    <small>번호 알려주시면 자동 가입 링크 발송 (몇 초 완료)</small>
+  </a>
+
+  <!-- 상품 목록 -->
+  <div class="section-title">📋 추천 상품 카탈로그</div>
+  <div class="product-list">
+    <a href="../pages/006_뉴트리라이트_칼슘_마그네슘.html" class="product-card" onclick="trackClick('product_006')">
+      <div class="thumb">
+        <div class="num-badge">#006</div>
+        <div class="thumb-placeholder">006</div>
+      </div>
+      <div class="body">
+        <div class="name">뉴트리라이트 칼슘 마그네슘</div>
+        <div class="cat">뼈 · 신경</div>
+        <div class="desc">뼈 건강 · 근육 이완 · 수면 개선</div>
+      </div>
+    </a>
+
+    <a href="../pages/005_뉴트리라이트_프로바이오틱스.html" class="product-card" onclick="trackClick('product_005')">
+      <div class="thumb">
+        <div class="num-badge">#005</div>
+        <div class="thumb-placeholder">005</div>
+      </div>
+      <div class="body">
+        <div class="name">뉴트리라이트 프로바이오틱스</div>
+        <div class="cat">장 건강 · 유산균</div>
+        <div class="desc">장내 유익균 증식 · 배변 활동</div>
+      </div>
+    </a>
+
+    <a href="../pages/004_뉴트리라이트_데일리.html" class="product-card" onclick="trackClick('product_004')">
+      <div class="thumb">
+        <div class="num-badge">#004</div>
+        <div class="thumb-placeholder">004</div>
+      </div>
+      <div class="body">
+        <div class="name">뉴트리라이트 데일리</div>
+        <div class="cat">종합비타민</div>
+        <div class="desc">12종 비타민·9종 미네랄 · 온가족</div>
+      </div>
+    </a>
+
+    <a href="../pages/003_뉴트리라이트_아세로라_C.html" class="product-card" onclick="trackClick('product_003')">
+      <div class="thumb">
+        <div class="num-badge">#003</div>
+        <div class="thumb-placeholder">003</div>
+      </div>
+      <div class="body">
+        <div class="name">뉴트리라이트 아세로라 C</div>
+        <div class="cat">비타민 · 면역</div>
+        <div class="desc">천연 비타민C · 항산화 · 감기 예방</div>
+      </div>
+    </a>
+
+    <a href="../pages/002_뉴트리라이트_코엔자임_큐텐.html" class="product-card" onclick="trackClick('product_002')">
+      <div class="thumb">
+        <div class="num-badge">#002</div>
+        <div class="thumb-placeholder">002</div>
+      </div>
+      <div class="body">
+        <div class="name">뉴트리라이트 코엔자임 큐텐</div>
+        <div class="cat">심혈관 · 항산화</div>
+        <div class="desc">에너지·활력 · 40대 이상 필수</div>
+      </div>
+    </a>
+
+    <a href="../pages/001_뉴트리라이트_오메가3.html" class="product-card" onclick="trackClick('product_001')">
+      <div class="thumb">
+        <div class="num-badge">#001</div>
+        <div class="thumb-placeholder">001</div>
+      </div>
+      <div class="body">
+        <div class="name">뉴트리라이트 오메가3</div>
+        <div class="cat">혈행 · EPA/DHA</div>
+        <div class="desc">심혈관 건강 · 혈행 개선</div>
+      </div>
+    </a></div>
+
+  <footer>
+    ※ 저는 한국암웨이 ABO(회원번호 7027465675)입니다.<br>
+    본 페이지는 개인 경험을 공유하는 후기 페이지입니다.<br>
+    구매·소득에는 개인차가 있을 수 있습니다.<br>
+    <span style="opacity: 0.7">
+      Total 6 products · Updated 2026-08-10 23:40
+    </span>
+  </footer>
+
+</div>
+
+<div class="toast" id="toast">복사됐어요! 🎉</div>
+
+<script>
+const SPONSOR = "7027465675";
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+async function copyToClipboard(text) {
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+      return true;
+    }
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.focus(); ta.select();
+    const ok = document.execCommand('copy');
+    document.body.removeChild(ta);
+    return ok;
+  } catch (e) { return false; }
+}
+
+async function copySponsor() {
+  const ok = await copyToClipboard(SPONSOR);
+  if (ok) {
+    showToast('후원자 번호 복사됐어요! 🎉');
+    trackClick('sponsor_copy_bio');
+  } else {
+    showToast('복사 실패 — 번호를 손으로 선택해 복사해주세요');
+  }
+}
+
+function trackClick(action) {
+  try {
+    const key = 'jayabo_clicks';
+    const now = new Date().toISOString();
+    const raw = localStorage.getItem(key);
+    const arr = raw ? JSON.parse(raw) : [];
+    arr.push({
+      page: 'bio_link',
+      action: action,
+      ts: now,
+      ua: navigator.userAgent.substring(0, 60),
+    });
+    localStorage.setItem(key, JSON.stringify(arr.slice(-100)));
+  } catch (e) { /* silent */ }
+}
+
+trackClick('view');
+</script>
+
+</body>
+</html>
