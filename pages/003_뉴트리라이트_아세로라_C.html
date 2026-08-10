@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>뉴트리라이트 아세로라 C</title>
+<meta name="description" content="천연 아세로라 원료 기반 비타민C 보충 영양제.
+식약처 인정 항산화·피부건강에 도움을 줄 수 있는 영양소.
+1일 1정으로 일일 권장량 100mg 이상 섭취 가능.">
+<meta property="og:title" content="뉴트리라이트 아세로라 C">
+<meta property="og:description" content="천연 아세로라 원료 기반 비타민C 보충 영양제.
+식약처 인정 항산화·피부건강에 도움을 줄 수 있는 영양소.
+1일 1정으로 일일 권장량 100mg 이상 섭취 가능.">
+<meta property="og:type" content="product">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<style>
+:root {
+  --brand: #002855;
+  --brand-2: #003d82;
+  --accent: #ff6b35;
+  --bg: #ffffff;
+  --card: #f7f8fb;
+  --border: #e5e7eb;
+  --text: #111827;
+  --muted: #6b7280;
+  --success: #10b981;
+  --kakao: #fee500;
+  --kakao-text: #191919;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --border: #334155;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+  }
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-tap-highlight-color: transparent;
+}
+img { max-width: 100%; height: auto; display: block; }
+button { font: inherit; cursor: pointer; border: none; }
+
+.container {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 20px 40px;
+}
+
+/* 헤더 */
+header.hero {
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  color: white;
+  padding: 32px 20px 40px;
+  text-align: center;
+}
+header.hero .catalog-num {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+header.hero h1 {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+header.hero .price {
+  margin-top: 12px;
+  font-size: 18px;
+  opacity: 0.95;
+}
+
+/* 상품 이미지 */
+.product-image {
+  margin: 20px 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--card);
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+}
+.product-image.no-image {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* 3단계 안내 카드 */
+.steps-card {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 20px;
+  margin: 20px 0;
+  border: 1px solid var(--border);
+}
+.steps-card h2 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.steps-card .estimate {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+.step {
+  display: flex;
+  gap: 12px;
+  padding: 12px 0;
+  border-top: 1px solid var(--border);
+}
+.step:first-of-type { border-top: none; padding-top: 0; }
+.step-num {
+  flex: 0 0 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--brand);
+  color: white;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 700;
+}
+.step-body {
+  flex: 1;
+  font-size: 14px;
+}
+.step-body strong { color: var(--brand); font-weight: 700; }
+
+/* 후원자 번호 카드 (원터치 복사) */
+.sponsor-card {
+  background: linear-gradient(135deg, #fff7ed, #ffedd5);
+  border: 2px solid var(--accent);
+  border-radius: 16px;
+  padding: 20px;
+  margin: 20px 0;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  -webkit-user-select: none;
+  user-select: none;
+}
+@media (prefers-color-scheme: dark) {
+  .sponsor-card {
+    background: linear-gradient(135deg, #431407, #7c2d12);
+    color: white;
+  }
+}
+.sponsor-card:active {
+  transform: scale(0.98);
+}
+.sponsor-label {
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+}
+.sponsor-num {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--brand);
+  letter-spacing: 2px;
+  font-variant-numeric: tabular-nums;
+}
+@media (prefers-color-scheme: dark) {
+  .sponsor-num { color: #fdba74; }
+}
+.sponsor-hint {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.sponsor-copied {
+  color: var(--success) !important;
+  font-weight: 600;
+}
+
+/* CTA 이중 버튼 */
+.cta-group {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin: 24px 0;
+}
+.cta {
+  padding: 18px;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  transition: transform 0.15s, opacity 0.15s;
+}
+.cta:active { transform: scale(0.98); }
+.cta-primary {
+  background: var(--brand);
+  color: white;
+}
+.cta-kakao {
+  background: var(--kakao);
+  color: var(--kakao-text);
+}
+.cta small {
+  display: block;
+  font-weight: 500;
+  font-size: 12px;
+  opacity: 0.85;
+  margin-top: 4px;
+}
+
+/* 상세 설명 */
+.section {
+  margin: 28px 0;
+}
+.section h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--brand);
+}
+@media (prefers-color-scheme: dark) {
+  .section h3 { color: #93c5fd; }
+}
+.section p, .section li {
+  font-size: 14px;
+  color: var(--text);
+}
+.section ul {
+  padding-left: 20px;
+}
+.section li {
+  margin-bottom: 6px;
+}
+
+/* 푸터 */
+footer {
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.7;
+}
+
+/* 토스트 알림 */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(120%);
+  background: var(--text);
+  color: var(--bg);
+  padding: 14px 22px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+  z-index: 100;
+  pointer-events: none;
+}
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="catalog-num">CATALOG #003</div>
+  <h1>뉴트리라이트 아세로라 C</h1>
+  <div class="price">42,000원</div>
+</header>
+
+<div class="container">
+
+<div class="product-image no-image">이미지 준비 중</div>
+
+<!-- 3단계 안내 -->
+<section class="steps-card">
+  <h2>✅ 이렇게 진행하시면 됩니다</h2>
+  <p class="estimate">회원가입 3단계 · 약 2분 소요</p>
+  <div class="step">
+    <div class="step-num">1</div>
+    <div class="step-body">
+      <strong>아래 후원자 번호 카드 탭</strong>해서 복사<br>
+      (탭하면 자동으로 클립보드에 저장됩니다)
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">2</div>
+    <div class="step-body">
+      <strong>[지금 바로 구매하기]</strong> 버튼 탭<br>
+      → 암웨이 상품 페이지로 이동
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-body">
+      회원가입 시 <strong>후원자 ABO 번호</strong>란에 붙여넣기<br>
+      + 이름·주소 입력 → 완료
+    </div>
+  </div>
+</section>
+
+<!-- 후원자 번호 카드 (원터치 복사) -->
+<div class="sponsor-card" id="sponsorCard" onclick="copySponsor()">
+  <div class="sponsor-label">📌 후원자 ABO 번호</div>
+  <div class="sponsor-num" id="sponsorNum">7027465675</div>
+  <div class="sponsor-hint" id="sponsorHint">👆 탭하면 자동 복사</div>
+</div>
+
+<!-- CTA 이중 버튼 -->
+<div class="cta-group">
+  <a href="https://www.amway.co.kr/shop/home/nutrilite/vitamin/p/105684K" class="cta cta-primary" id="buyBtn" onclick="onBuyClick(event)">
+    🛒 지금 바로 구매하기
+    <small>탭 시 후원자 번호 자동 복사 + 암웨이 이동</small>
+  </a>
+  <a href="https://open.kakao.com/o/YOUR_OPENCHAT" class="cta cta-kakao" onclick="trackClick('kakao')">
+    💬 카톡으로 도움받기
+    <small>개별 상담·간편가입 도움</small>
+  </a>
+</div>
+
+<section class="section"><h3>📌 상품 정보</h3><p>천연 아세로라 원료 기반 비타민C 보충 영양제.<br>식약처 인정 항산화·피부건강에 도움을 줄 수 있는 영양소.<br>1일 1정으로 일일 권장량 100mg 이상 섭취 가능.</p></section>
+<section class="section"><h3>🧪 주요 성분</h3><ul><li>아세로라 추출물 (천연 비타민C)</li><li>비타민C 100mg (하루 권장량 100%)</li><li>천연 항산화 성분 · 폴리페놀</li></ul></section>
+<section class="section"><h3>💡 이런 분께 추천</h3><ul><li>아침·저녁 식사 자주 거르시는 분</li><li>감기 예방·피부 컨디션 관리 필요한 분</li><li>직장 스트레스 많은 워킹맘·워킹대디</li><li>환절기 면역력 관리 원하는 분</li></ul></section>
+
+<footer>
+  ※ 저는 한국암웨이 ABO(회원번호 7027465675)입니다.<br>
+  본 페이지는 개인 경험을 공유하는 후기이며, 개인차가 있을 수 있습니다.<br>
+  <span style="color: var(--muted); font-size: 11px;">
+    Catalog #003 · Generated 2026-08-10 23:29
+  </span>
+</footer>
+
+</div>
+
+<div class="toast" id="toast">복사됐어요! 🎉</div>
+
+<script>
+const SPONSOR = "7027465675";
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+async function copyToClipboard(text) {
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+      return true;
+    }
+    // fallback for older browsers
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.focus(); ta.select();
+    const ok = document.execCommand('copy');
+    document.body.removeChild(ta);
+    return ok;
+  } catch (e) {
+    console.error('copy failed', e);
+    return false;
+  }
+}
+
+async function copySponsor() {
+  const ok = await copyToClipboard(SPONSOR);
+  const hint = document.getElementById('sponsorHint');
+  if (ok) {
+    hint.textContent = '✓ 복사됨! 회원가입 시 붙여넣으세요';
+    hint.classList.add('sponsor-copied');
+    showToast('후원자 번호 복사됐어요! 🎉');
+    trackClick('sponsor_copy');
+    setTimeout(() => {
+      hint.textContent = '👆 탭하면 자동 복사';
+      hint.classList.remove('sponsor-copied');
+    }, 3500);
+  } else {
+    showToast('복사 실패 — 번호를 손으로 선택해 복사해주세요');
+  }
+}
+
+async function onBuyClick(e) {
+  e.preventDefault();
+  const link = e.currentTarget.href;
+  await copyToClipboard(SPONSOR);
+  showToast('번호 복사됐어요! 회원가입에서 붙여넣으세요');
+  trackClick('buy');
+  setTimeout(() => window.location.href = link, 900);
+}
+
+// 이탈 추적 (초기 버전 — localStorage에 이벤트 로그)
+function trackClick(action) {
+  try {
+    const key = 'jayabo_clicks';
+    const now = new Date().toISOString();
+    const raw = localStorage.getItem(key);
+    const arr = raw ? JSON.parse(raw) : [];
+    arr.push({
+      page: 'catalog_003',
+      action: action,
+      ts: now,
+      ua: navigator.userAgent.substring(0, 60),
+    });
+    localStorage.setItem(key, JSON.stringify(arr.slice(-100)));
+  } catch (e) { /* silent */ }
+}
+
+// 페이지 방문 추적
+trackClick('view');
+</script>
+
+</body>
+</html>
