@@ -151,6 +151,39 @@ header.profile .bio {
   opacity: 0.75;
 }
 
+/* 3섹션 네비 (상품·부업·블로그) */
+.section-nav {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.section-nav a {
+  padding: 16px 12px;
+  border-radius: 14px;
+  text-decoration: none;
+  text-align: center;
+  font-weight: 700;
+  font-size: 14px;
+  border: 2px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  transition: all 0.15s;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+}
+.section-nav a:hover, .section-nav a:active {
+  transform: translateY(-2px);
+  border-color: var(--brand);
+}
+.section-nav a .icon { font-size: 24px; }
+.section-nav a small { font-size: 10px; font-weight: 500; color: var(--muted); }
+.section-nav a.products { border-color: color-mix(in srgb, var(--brand) 40%, transparent); }
+.section-nav a.business { border-color: color-mix(in srgb, var(--accent) 40%, transparent); }
+.section-nav a.blog { border-color: color-mix(in srgb, var(--success) 40%, transparent); }
+
 /* 섹션 제목 */
 .section-title {
   font-size: 14px;
@@ -325,15 +358,47 @@ footer {
     <button class="copy-btn" onclick="event.stopPropagation(); copySponsor()">복사</button>
   </div>
 
+  <!-- 3섹션 네비 (상품·부업·블로그) -->
+  <div class="section-nav">
+    <a href="#products" class="products" onclick="trackClick('nav_products')">
+      <span class="icon">🛒</span>
+      <span>상품</span>
+      <small>카탈로그</small>
+    </a>
+    <a href="/business/" class="business" onclick="trackClick('nav_business')">
+      <span class="icon">💼</span>
+      <span>부업</span>
+      <small>N잡 · ABO</small>
+    </a>
+    <a href="/blog/" class="blog" onclick="trackClick('nav_blog')">
+      <span class="icon">📖</span>
+      <span>블로그</span>
+      <small>정보 · 후기</small>
+    </a>
+  </div>
+
   <!-- 상단 카톡 CTA -->
   <a href="https://open.kakao.com/o/YOUR_OPENCHAT" class="cta-kakao-top" onclick="trackClick('kakao_top')">
     💬 카톡 오픈채팅으로 상담·간편가입
     <small>번호 알려주시면 자동 가입 링크 발송 (몇 초 완료)</small>
   </a>
+  <div id="products"></div>
 
   <!-- 상품 목록 -->
   <div class="section-title">📋 추천 상품 카탈로그</div>
   <div class="product-list">
+    <a href="pages/002_옵티미스트_워셔블_필터.html" class="product-card" onclick="trackClick('product_002')">
+      <div class="thumb">
+        <div class="num-badge">#002</div>
+        <div class="thumb-placeholder">002</div>
+      </div>
+      <div class="body">
+        <div class="name">옵티미스트 워셔블 필터</div>
+        <div class="cat">건강</div>
+        
+      </div>
+    </a>
+
     <a href="pages/001_아세로라_C_(300정,_100일분).html" class="product-card" onclick="trackClick('product_001')">
       <div class="thumb">
         <div class="num-badge">#001</div>
@@ -351,7 +416,7 @@ footer {
     본 페이지는 개인 경험을 공유하는 후기 페이지입니다.<br>
     구매·소득에는 개인차가 있을 수 있습니다.<br>
     <span style="opacity: 0.7">
-      Total 1 products · Updated 2026-09-02 21:18
+      Total 2 products · Updated 2026-09-04 08:00
     </span>
   </footer>
 
