@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>옵티미스트 워셔블 필터</title>
+<meta name="description" content="#가습기 #미세수분 #옵티미스트 #겨울">
+<meta property="og:title" content="옵티미스트 워셔블 필터">
+<meta property="og:description" content="#가습기 #미세수분 #옵티미스트 #겨울">
+<meta property="og:type" content="product">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<style>
+:root {
+  --brand: #002855;
+  --brand-2: #003d82;
+  --accent: #ff6b35;
+  --bg: #ffffff;
+  --card: #f7f8fb;
+  --border: #e5e7eb;
+  --text: #111827;
+  --muted: #6b7280;
+  --success: #10b981;
+  --kakao: #fee500;
+  --kakao-text: #191919;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --border: #334155;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+  }
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-tap-highlight-color: transparent;
+}
+img { max-width: 100%; height: auto; display: block; }
+button { font: inherit; cursor: pointer; border: none; }
+
+.container {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 20px 40px;
+}
+
+/* 헤더 */
+header.hero {
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  color: white;
+  padding: 32px 20px 40px;
+  text-align: center;
+}
+header.hero .catalog-num {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+header.hero h1 {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+header.hero .price {
+  margin-top: 12px;
+  font-size: 18px;
+  opacity: 0.95;
+}
+
+/* 상품 이미지 */
+.product-image {
+  margin: 20px 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--card);
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+}
+.product-image.no-image {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* 3단계 안내 카드 */
+.steps-card {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 20px;
+  margin: 20px 0;
+  border: 1px solid var(--border);
+}
+.steps-card h2 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.steps-card .estimate {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+.step {
+  display: flex;
+  gap: 12px;
+  padding: 12px 0;
+  border-top: 1px solid var(--border);
+}
+.step:first-of-type { border-top: none; padding-top: 0; }
+.step-num {
+  flex: 0 0 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--brand);
+  color: white;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 700;
+}
+.step-body {
+  flex: 1;
+  font-size: 14px;
+}
+.step-body strong { color: var(--brand); font-weight: 700; }
+
+/* 후원자 번호 카드 (원터치 복사) */
+.sponsor-card {
+  background: linear-gradient(135deg, #fff7ed, #ffedd5);
+  border: 2px solid var(--accent);
+  border-radius: 16px;
+  padding: 20px;
+  margin: 20px 0;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  -webkit-user-select: none;
+  user-select: none;
+}
+@media (prefers-color-scheme: dark) {
+  .sponsor-card {
+    background: linear-gradient(135deg, #431407, #7c2d12);
+    color: white;
+  }
+}
+.sponsor-card:active {
+  transform: scale(0.98);
+}
+.sponsor-label {
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+}
+.sponsor-num {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--brand);
+  letter-spacing: 2px;
+  font-variant-numeric: tabular-nums;
+}
+@media (prefers-color-scheme: dark) {
+  .sponsor-num { color: #fdba74; }
+}
+.sponsor-hint {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.sponsor-copied {
+  color: var(--success) !important;
+  font-weight: 600;
+}
+
+/* CTA 이중 버튼 */
+.cta-group {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin: 24px 0;
+}
+.cta {
+  padding: 18px;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  transition: transform 0.15s, opacity 0.15s;
+}
+.cta:active { transform: scale(0.98); }
+.cta-primary {
+  background: var(--brand);
+  color: white;
+}
+.cta-kakao {
+  background: var(--kakao);
+  color: var(--kakao-text);
+}
+.cta small {
+  display: block;
+  font-weight: 500;
+  font-size: 12px;
+  opacity: 0.85;
+  margin-top: 4px;
+}
+
+/* 상세 설명 */
+.section {
+  margin: 28px 0;
+}
+.section h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--brand);
+}
+@media (prefers-color-scheme: dark) {
+  .section h3 { color: #93c5fd; }
+}
+.section p, .section li {
+  font-size: 14px;
+  color: var(--text);
+}
+.section ul {
+  padding-left: 20px;
+}
+.section li {
+  margin-bottom: 6px;
+}
+
+/* 푸터 */
+footer {
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.7;
+}
+
+/* 토스트 알림 */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(120%);
+  background: var(--text);
+  color: var(--bg);
+  padding: 14px 22px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+  z-index: 100;
+  pointer-events: none;
+}
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+}
+
+/* 구매 확인 모달 */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.55); backdrop-filter: blur(4px);
+  display: none; align-items: center; justify-content: center;
+  z-index: 200; padding: 20px;
+}
+.modal-overlay.show { display: flex; animation: fadeIn 0.2s; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.modal {
+  background: var(--card); border-radius: 20px; padding: 28px 24px;
+  max-width: 460px; width: 100%; box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  animation: slideUp 0.3s;
+}
+@keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: none; opacity: 1; } }
+.modal h3 { font-size: 18px; font-weight: 800; margin-bottom: 8px; text-align: center; color: var(--brand); }
+@media (prefers-color-scheme: dark) { .modal h3 { color: #93c5fd; } }
+.modal .lead { font-size: 13px; color: var(--muted); text-align: center; margin-bottom: 18px; line-height: 1.5; }
+.modal .code-box {
+  background: linear-gradient(135deg, #fff7ed, #ffedd5);
+  border: 3px solid var(--accent);
+  border-radius: 16px; padding: 22px; text-align: center; margin-bottom: 18px;
+}
+@media (prefers-color-scheme: dark) {
+  .modal .code-box { background: linear-gradient(135deg, #431407, #7c2d12); }
+}
+.modal .code-label { font-size: 12px; color: var(--accent); font-weight: 700; letter-spacing: 2px; margin-bottom: 8px; }
+.modal .code-num { font-size: 40px; font-weight: 900; color: var(--brand); letter-spacing: 3px; font-variant-numeric: tabular-nums; line-height: 1; }
+@media (prefers-color-scheme: dark) { .modal .code-num { color: #fdba74; } }
+.modal .code-status { margin-top: 10px; font-size: 12px; font-weight: 700; color: var(--success); }
+.modal .steps-mini { background: var(--bg); border-radius: 10px; padding: 14px; margin-bottom: 16px; font-size: 13px; line-height: 1.7; color: var(--text); }
+.modal .steps-mini strong { color: var(--brand); }
+@media (prefers-color-scheme: dark) { .modal .steps-mini strong { color: #93c5fd; } }
+.modal .modal-actions { display: grid; grid-template-columns: 1fr 2fr; gap: 8px; }
+.modal .btn-secondary, .modal .btn-primary {
+  padding: 14px; border-radius: 12px; font-size: 14px; font-weight: 700;
+  border: none; cursor: pointer; font-family: inherit; transition: transform 0.15s;
+}
+.modal .btn-secondary { background: var(--card); color: var(--text); border: 1px solid var(--border); }
+.modal .btn-primary { background: var(--brand); color: white; }
+.modal .btn-primary:hover, .modal .btn-secondary:hover { filter: brightness(1.05); }
+.modal .btn-primary:active, .modal .btn-secondary:active { transform: scale(0.98); }
+
+/* Sticky 하단 CTA (카톡 상담) */
+.sticky-cta {
+  position: fixed; bottom: 20px; right: 20px; z-index: 90;
+  display: flex; flex-direction: column; gap: 10px; align-items: flex-end;
+}
+.sticky-cta a {
+  display: flex; align-items: center; gap: 8px;
+  padding: 12px 18px; border-radius: 30px; text-decoration: none;
+  font-weight: 700; font-size: 14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  transition: transform 0.15s;
+}
+.sticky-cta a:hover { transform: translateY(-2px); }
+.sticky-cta .kakao { background: var(--kakao); color: var(--kakao-text); }
+.sticky-cta .top {
+  width: 44px; height: 44px; padding: 0; justify-content: center;
+  background: var(--card); color: var(--text); border: 1px solid var(--border);
+  border-radius: 50%; font-size: 18px;
+  opacity: 0; pointer-events: none; transition: opacity 0.2s, transform 0.15s;
+}
+.sticky-cta .top.show { opacity: 1; pointer-events: auto; }
+
+/* Exit intent (마우스가 창 위쪽으로 벗어날 때) */
+.exit-intent {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.55); backdrop-filter: blur(4px);
+  display: none; align-items: center; justify-content: center;
+  z-index: 300; padding: 20px;
+}
+.exit-intent.show { display: flex; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="catalog-num">CATALOG #002</div>
+  <h1>옵티미스트 워셔블 필터</h1>
+  <div class="price">50,000원</div>
+</header>
+
+<div class="container">
+
+<div class="product-image"><img src="../assets/002.jpg" alt="옵티미스트 워셔블 필터"></div>
+
+<!-- 3단계 안내 -->
+<section class="steps-card">
+  <h2>✅ 이렇게 진행하시면 됩니다</h2>
+  <p class="estimate">회원가입 3단계 · 약 2분 소요</p>
+  <div class="step">
+    <div class="step-num">1</div>
+    <div class="step-body">
+      <strong>아래 후원자 번호 카드 탭</strong>해서 복사<br>
+      (탭하면 자동으로 클립보드에 저장됩니다)
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">2</div>
+    <div class="step-body">
+      <strong>[지금 바로 구매하기]</strong> 버튼 탭<br>
+      → 암웨이 상품 페이지로 이동
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-body">
+      회원가입 시 <strong>후원자 ABO 번호</strong>란에 붙여넣기<br>
+      + 이름·주소 입력 → 완료
+    </div>
+  </div>
+</section>
+
+<!-- 후원자 번호 카드 (원터치 복사) -->
+<div class="sponsor-card" id="sponsorCard" onclick="copySponsor()">
+  <div class="sponsor-label">📌 후원자 ABO 번호</div>
+  <div class="sponsor-num" id="sponsorNum">7027465675</div>
+  <div class="sponsor-hint" id="sponsorHint">👆 탭하면 자동 복사</div>
+</div>
+
+<!-- CTA 이중 버튼 -->
+<div class="cta-group">
+  <a href="https://www.amway.co.kr/shop/wellness/optimist/p/321250K" class="cta cta-primary" id="buyBtn" onclick="onBuyClick(event)">
+    🛒 지금 바로 구매하기
+    <small>탭 시 후원자 번호 자동 복사 + 암웨이 이동</small>
+  </a>
+  <a href="https://open.kakao.com/o/YOUR_OPENCHAT" class="cta cta-kakao" onclick="trackClick('kakao')">
+    💬 카톡으로 도움받기
+    <small>개별 상담·간편가입 도움</small>
+  </a>
+</div>
+
+<section class="section"><h3>📌 상품 정보</h3><p>#가습기 #미세수분 #옵티미스트 #겨울</p></section>
+
+<footer>
+  ※ 저는 한국암웨이 ABO(회원번호 7027465675)입니다.<br>
+  본 페이지는 개인 경험을 공유하는 후기이며, 개인차가 있을 수 있습니다.<br>
+  <span style="color: var(--muted); font-size: 11px;">
+    Catalog #002 · Generated 2026-09-04 08:00
+  </span>
+</footer>
+
+</div>
+
+<div class="toast" id="toast">복사됐어요! 🎉</div>
+
+<!-- 구매 확인 모달 -->
+<div class="modal-overlay" id="buyModal" onclick="if(event.target===this) closeBuyModal()">
+  <div class="modal">
+    <h3>🛒 구매 안내</h3>
+    <p class="lead">암웨이로 이동하기 전에<br><b>회원가입 시 후원자 번호</b>가 꼭 필요해요.</p>
+
+    <div class="code-box">
+      <div class="code-label">📌 후원자 ABO 번호</div>
+      <div class="code-num">7027465675</div>
+      <div class="code-status" id="modalCodeStatus">✓ 클립보드에 자동 복사됨</div>
+    </div>
+
+    <div class="steps-mini">
+      <strong>1.</strong> 아래 [암웨이로 이동] 버튼 클릭<br>
+      <strong>2.</strong> 회원가입 페이지의 "후원자 ABO 번호"란에 <strong>붙여넣기 (Ctrl+V)</strong><br>
+      <strong>3.</strong> 이름·주소 입력 → 완료
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="closeBuyModal()">취소</button>
+      <button class="btn-primary" onclick="goToAmway()">암웨이로 이동 →</button>
+    </div>
+  </div>
+</div>
+
+<!-- Sticky CTA -->
+<div class="sticky-cta">
+  <button class="top" id="stickyTop" onclick="window.scrollTo({top:0, behavior:'smooth'})" title="맨 위로">↑</button>
+  <a href="https://open.kakao.com/o/YOUR_OPENCHAT" class="kakao" onclick="trackClick('sticky_kakao')">
+    💬 카톡 상담
+  </a>
+</div>
+
+<script>
+const SPONSOR = "7027465675";
+const PRODUCT_URL = "https://www.amway.co.kr/shop/wellness/optimist/p/321250K";
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+async function copyToClipboard(text) {
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+      return true;
+    }
+    // fallback for older browsers
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.focus(); ta.select();
+    const ok = document.execCommand('copy');
+    document.body.removeChild(ta);
+    return ok;
+  } catch (e) {
+    console.error('copy failed', e);
+    return false;
+  }
+}
+
+async function copySponsor() {
+  const ok = await copyToClipboard(SPONSOR);
+  const hint = document.getElementById('sponsorHint');
+  if (ok) {
+    hint.textContent = '✓ 복사됨! 회원가입 시 붙여넣으세요';
+    hint.classList.add('sponsor-copied');
+    showToast('후원자 번호 복사됐어요! 🎉');
+    trackClick('sponsor_copy');
+    setTimeout(() => {
+      hint.textContent = '👆 탭하면 자동 복사';
+      hint.classList.remove('sponsor-copied');
+    }, 3500);
+  } else {
+    showToast('복사 실패 — 번호를 손으로 선택해 복사해주세요');
+  }
+}
+
+async function onBuyClick(e) {
+  e.preventDefault();
+  // 클립보드 복사 시도
+  const copied = await copyToClipboard(SPONSOR);
+  const status = document.getElementById('modalCodeStatus');
+  if (status) {
+    status.textContent = copied ? '✓ 클립보드에 자동 복사됨' : '⚠️ 복사 실패 – 위 번호를 손으로 복사해주세요';
+    status.style.color = copied ? 'var(--success)' : 'var(--accent)';
+  }
+  // localStorage에 번호 저장 (재방문 시 유지)
+  try {
+    localStorage.setItem('sponsor_number', SPONSOR);
+    localStorage.setItem('last_product', PRODUCT_URL);
+    localStorage.setItem('last_visit', new Date().toISOString());
+  } catch (e) { /* silent */ }
+  // 모달 열기
+  document.getElementById('buyModal').classList.add('show');
+  trackClick('buy_modal_open');
+}
+
+async function goToAmway() {
+  // 한번 더 복사 (혹시 놓쳤을 경우)
+  await copyToClipboard(SPONSOR);
+  trackClick('buy_go_amway');
+  closeBuyModal();
+  window.open(PRODUCT_URL, '_blank');
+}
+
+function closeBuyModal() {
+  document.getElementById('buyModal').classList.remove('show');
+}
+
+// Sticky 맨위 버튼 스크롤 감지
+window.addEventListener('scroll', () => {
+  const topBtn = document.getElementById('stickyTop');
+  if (topBtn) {
+    if (window.scrollY > 500) topBtn.classList.add('show');
+    else topBtn.classList.remove('show');
+  }
+});
+
+// Exit Intent (마우스가 창 위로 벗어날 때 카톡 유도) - 한번만
+let exitShown = false;
+document.addEventListener('mouseleave', (e) => {
+  if (e.clientY <= 0 && !exitShown && !localStorage.getItem('exit_shown_' + '2')) {
+    exitShown = true;
+    try { localStorage.setItem('exit_shown_' + '2', '1'); } catch (e) {}
+    if (confirm('잠깐! 궁금하신 점이 있으시면 카톡 상담 드릴게요.\n카톡 상담으로 이동하시겠어요?')) {
+      window.location.href = 'https://open.kakao.com/o/YOUR_OPENCHAT';
+      trackClick('exit_intent_kakao');
+    } else {
+      trackClick('exit_intent_dismissed');
+    }
+  }
+});
+
+// 이탈 추적 (초기 버전 — localStorage에 이벤트 로그)
+function trackClick(action) {
+  try {
+    const key = 'jayabo_clicks';
+    const now = new Date().toISOString();
+    const raw = localStorage.getItem(key);
+    const arr = raw ? JSON.parse(raw) : [];
+    arr.push({
+      page: 'catalog_002',
+      action: action,
+      ts: now,
+      ua: navigator.userAgent.substring(0, 60),
+    });
+    localStorage.setItem(key, JSON.stringify(arr.slice(-100)));
+  } catch (e) { /* silent */ }
+}
+
+// 페이지 방문 추적
+trackClick('view');
+</script>
+
+</body>
+</html>
