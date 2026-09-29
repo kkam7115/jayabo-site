@@ -7,8 +7,9 @@
   const path = location.pathname;
   const isActive = (test) => {
     if (test === 'home') return path === '/' || path.endsWith('/index.html') || path === BASE || path === BASE + '/';
-    if (test === 'products') return path.includes('/products') || (path.includes('/pages/') && !path.includes('guide_'));
-    if (test === 'guide') return path.includes('guide_') || path.includes('/guide');
+    if (test === 'products') return path.includes('products.html') || (path.includes('/pages/') && !path.includes('guide_'));
+    if (test === 'business') return path.includes('business.html');
+    if (test === 'guide') return path.includes('guide_') || path.includes('guide.html');
     if (test === 'blog') return path.includes('/blog');
     return false;
   };
@@ -26,6 +27,7 @@
       <nav class="jay-nav">
         <a class="${cls('home')}" href="${BASE}/">홈</a>
         <a class="${cls('products')}" href="${BASE}/products.html">상품</a>
+        <a class="${cls('business')}" href="${BASE}/business.html">부업</a>
         <a class="${cls('guide')}" href="${BASE}/guide.html">가이드</a>
         <a class="${cls('blog')}" href="${NAVER_BLOG_URL}" target="_blank">블로그 ↗</a>
       </nav>
