@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>상품 카탈로그 · JAY ABO</title>
 <meta name="description" content="암웨이 검증 상품 전체 · 카테고리별 필터 · 후원자 준영 추천">
-<link rel="stylesheet" href="_layout/site.css">
+<link rel="stylesheet" href="layout/site.css">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'Malgun Gothic','Apple SD Gothic Neo',sans-serif; background: var(--jay-bg); color: var(--jay-text); line-height: 1.6; }
@@ -91,7 +91,7 @@
   <div id="empty-state" class="empty-state" style="display:none">일치하는 상품 없음</div>
 </div>
 
-<script src="_layout/site.js"></script>
+<script src="layout/site.js"></script>
 <script>
 let ALL = [];
 async function loadProducts() {
@@ -121,13 +121,16 @@ function applyFilter() {
   const cat = urlCat || chipCat;
   const search = (document.getElementById('search-input')?.value || '').trim().toLowerCase();
 
+  // 검색어가 있으면 · 카테고리 필터 무시하고 · 전체에서 검색 (준영님 요청)
+  const effectiveCat = search ? 'all' : cat;
+
   // URL cat와 chip 싱크
   document.querySelectorAll('.filter-chip').forEach(c => {
     c.classList.toggle('active', c.dataset.cat === cat);
   });
 
   let filtered = ALL.filter(p => {
-    if (cat && cat !== 'all' && categoryOf(p) !== cat) return false;
+    if (effectiveCat && effectiveCat !== 'all' && categoryOf(p) !== effectiveCat) return false;
     if (search && !(p.name || '').toLowerCase().includes(search)) return false;
     return true;
   });
