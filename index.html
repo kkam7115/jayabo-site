@@ -1,178 +1,665 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JAY ABO · 후원자 준영과 함께하는 암웨이 웰빙</title>
-<meta name="description" content="뉴트리라이트·아티스트리 등 검증된 암웨이 상품 · 후원자 7027465675로 안심 회원가입">
-<meta property="og:title" content="JAY ABO · 웰빙 시작하기">
-<link rel="stylesheet" href="layout/site.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>JAY ABO · 상품 카탈로그</title>
+<meta name="description" content="JAY ABO의 추천 상품 · 후기 · 카톡 상담">
+<meta property="og:title" content="JAY ABO · 상품 카탈로그">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Malgun Gothic','Apple SD Gothic Neo','Pretendard',sans-serif; background: var(--jay-bg); color: var(--jay-text); line-height: 1.6; }
-  .container { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+:root {
+  --brand: #002855;
+  --brand-2: #003d82;
+  --accent: #ff6b35;
+  --bg: #f7f8fb;
+  --card: #ffffff;
+  --border: #e5e7eb;
+  --text: #111827;
+  --muted: #6b7280;
+  --success: #10b981;
+  --kakao: #fee500;
+  --kakao-text: #191919;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --border: #334155;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+  }
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.55;
+  -webkit-tap-highlight-color: transparent;
+}
+img { max-width: 100%; height: auto; display: block; }
 
-  /* Hero */
-  .hero {
-    background: linear-gradient(135deg, #002855 0%, #003d82 50%, #0066cc 100%);
-    color: #fff; padding: 80px 20px 90px; text-align: center;
-  }
-  .hero h1 { font-size: 42px; font-weight: 800; margin-bottom: 16px; letter-spacing: -0.5px; }
-  .hero p { font-size: 18px; opacity: 0.92; max-width: 600px; margin: 0 auto 30px; }
-  .hero-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-  .btn-primary {
-    background: #ff6b35; color: #fff; padding: 14px 32px;
-    border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 16px;
-    box-shadow: 0 4px 12px rgba(255,107,53,0.3); transition: transform 0.15s;
-  }
-  .btn-primary:hover { transform: translateY(-2px); }
-  .btn-secondary {
-    background: rgba(255,255,255,0.15); color: #fff; padding: 14px 26px;
-    border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 15px;
-    border: 1px solid rgba(255,255,255,0.3);
-  }
-  .btn-secondary:hover { background: rgba(255,255,255,0.25); }
+.container {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 16px 60px;
+}
 
-  /* 섹션 공통 */
-  section { padding: 60px 0; }
-  h2 { font-size: 28px; font-weight: 800; margin-bottom: 8px; text-align: center; }
-  .section-sub { text-align: center; color: var(--jay-muted); margin-bottom: 34px; font-size: 15px; }
+/* 헤더 */
+header.profile {
+  padding: 32px 20px 24px;
+  text-align: center;
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  color: white;
+}
+header.profile .avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  margin: 0 auto 16px;
+  display: grid;
+  place-items: center;
+  font-size: 42px;
+}
+header.profile h1 {
+  font-size: 22px;
+  font-weight: 700;
+}
+header.profile .handle {
+  font-size: 14px;
+  opacity: 0.85;
+  margin-top: 4px;
+}
+header.profile .bio {
+  margin-top: 12px;
+  font-size: 14px;
+  opacity: 0.95;
+  line-height: 1.6;
+  padding: 0 12px;
+}
 
-  /* 카테고리 */
-  .cat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
-  .cat-card {
-    background: #fff; border: 1px solid var(--jay-border); border-radius: 14px;
-    padding: 26px 20px; text-align: center; text-decoration: none;
-    color: var(--jay-text); transition: all 0.15s;
+/* 후원자 번호 상시 카드 */
+.sponsor-strip {
+  background: linear-gradient(135deg, #fff7ed, #ffedd5);
+  border: 2px solid var(--accent);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin: 20px 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+@media (prefers-color-scheme: dark) {
+  .sponsor-strip {
+    background: linear-gradient(135deg, #431407, #7c2d12);
+    color: white;
   }
-  .cat-card:hover { border-color: var(--jay-brand); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,40,85,0.08); }
-  .cat-emoji { font-size: 42px; margin-bottom: 8px; }
-  .cat-name { font-weight: 700; font-size: 16px; margin-bottom: 4px; }
-  .cat-desc { font-size: 12px; color: var(--jay-muted); }
+}
+.sponsor-strip:active { transform: scale(0.99); }
+.sponsor-strip .icon { font-size: 24px; }
+.sponsor-strip .body { flex: 1; }
+.sponsor-strip .label {
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.sponsor-strip .num {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--brand);
+  letter-spacing: 1px;
+  font-variant-numeric: tabular-nums;
+}
+@media (prefers-color-scheme: dark) {
+  .sponsor-strip .num { color: #fdba74; }
+}
+.sponsor-strip .copy-btn {
+  padding: 8px 14px;
+  background: var(--brand);
+  color: white;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  border: none;
+}
 
-  /* 가이드 */
-  .guide-section { background: #fff; }
-  .guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
-  .guide-card {
-    background: linear-gradient(135deg, #f8fafc, #fff);
-    border: 1px solid var(--jay-border); border-radius: 16px;
-    padding: 26px 22px; text-decoration: none; color: var(--jay-text);
-    transition: all 0.15s; display: block;
-  }
-  .guide-card:hover { border-color: var(--jay-brand); transform: translateY(-2px); }
-  .guide-icon { font-size: 34px; margin-bottom: 10px; }
-  .guide-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 6px; color: var(--jay-brand); }
-  .guide-card p { font-size: 13px; color: var(--jay-muted); }
+/* CTA 상단 카톡 버튼 */
+.cta-kakao-top {
+  display: block;
+  background: var(--kakao);
+  color: var(--kakao-text);
+  padding: 14px;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: 700;
+  text-decoration: none;
+  margin-bottom: 24px;
+  transition: transform 0.15s;
+}
+.cta-kakao-top:active { transform: scale(0.99); }
+.cta-kakao-top small {
+  display: block;
+  font-weight: 500;
+  font-size: 12px;
+  margin-top: 3px;
+  opacity: 0.75;
+}
 
-  /* 소개 */
-  .intro-section { background: #fff; }
-  .intro-inner { max-width: 700px; margin: 0 auto; text-align: center; }
-  .intro-inner p { font-size: 16px; margin-bottom: 14px; line-height: 1.8; }
-  .highlight { background: #fff3cd; padding: 2px 8px; border-radius: 4px; font-weight: 700; }
+/* 3섹션 네비 (상품·부업·블로그) */
+.section-nav {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.section-nav a {
+  padding: 16px 12px;
+  border-radius: 14px;
+  text-decoration: none;
+  text-align: center;
+  font-weight: 700;
+  font-size: 14px;
+  border: 2px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  transition: all 0.15s;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+}
+.section-nav a:hover, .section-nav a:active {
+  transform: translateY(-2px);
+  border-color: var(--brand);
+}
+.section-nav a .icon { font-size: 24px; }
+.section-nav a small { font-size: 10px; font-weight: 500; color: var(--muted); }
+.section-nav a.products { border-color: color-mix(in srgb, var(--brand) 40%, transparent); }
+.section-nav a.business { border-color: color-mix(in srgb, var(--accent) 40%, transparent); }
+.section-nav a.blog { border-color: color-mix(in srgb, var(--success) 40%, transparent); }
 
-  .sponsor-box {
-    background: #f0f9ff; border-left: 5px solid var(--jay-brand);
-    padding: 22px 26px; border-radius: 10px; margin-top: 30px;
-  }
-  .sponsor-num-big {
-    font-size: 34px; font-weight: 900; color: var(--jay-brand);
-    letter-spacing: 3px; font-family: monospace; margin-top: 6px;
-  }
+/* 섹션 제목 */
+.section-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 1px;
+  margin: 24px 0 12px;
+  text-transform: uppercase;
+}
 
-  @media (max-width: 720px) {
-    .hero { padding: 60px 20px 70px; }
-    .hero h1 { font-size: 30px; }
-    h2 { font-size: 24px; }
+/* 상품 진열 (2열 그리드) */
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.product-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--text);
+  transition: transform 0.15s, box-shadow 0.15s;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.product-card:hover {
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+.product-card:active { transform: scale(0.98); }
+.product-card .thumb {
+  aspect-ratio: 1 / 1;
+  background: linear-gradient(135deg, #eef2f7, #dbe4ee);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  position: relative;
+}
+@media (prefers-color-scheme: dark) {
+  .product-card .thumb {
+    background: linear-gradient(135deg, #334155, #1e293b);
   }
+}
+.product-card .thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.product-card .thumb-placeholder {
+  font-size: 42px;
+  color: var(--brand);
+  opacity: 0.35;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+@media (prefers-color-scheme: dark) {
+  .product-card .thumb-placeholder { color: #93c5fd; opacity: 0.5; }
+}
+.product-card .num-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: var(--brand);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+.product-card .body {
+  padding: 12px 12px 14px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.product-card .name {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--text);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.product-card .cat {
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 500;
+}
+.product-card .desc {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* 화면 좁을 때 1열로 폴백 (선택) */
+@media (max-width: 359px) {
+  .product-list { grid-template-columns: 1fr; }
+}
+
+/* 빈 상태 */
+.empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* 푸터 */
+footer {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.7;
+}
+
+/* 토스트 */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(120%);
+  background: var(--text);
+  color: var(--bg);
+  padding: 14px 22px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+  z-index: 100;
+  pointer-events: none;
+}
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+}
 </style>
 </head>
 <body>
 
-<!-- Hero -->
-<section class="hero">
-  <div class="container">
-    <h1>웰빙, 어렵지 않게 시작하세요</h1>
-    <p>검증된 암웨이 상품 · 후원자 준영과 함께 · 회원가입부터 상담까지 원스톱</p>
-    <div class="hero-cta">
-      <a href="pages/guide_signup.html" class="btn-primary">🚀 회원가입 가이드</a>
-      <a href="products.html" class="btn-secondary">📦 상품 보기</a>
-    </div>
-  </div>
-</section>
+<header class="profile">
+  <div class="avatar">👤</div>
+  <h1>JAY ABO</h1>
+  <div class="handle">@jayabo</div>
+  <div class="bio">매일 소개하는 검증 제품·리얼 후기<br>궁금하신 점은 언제든 카톡·DM으로 편하게</div>
+</header>
 
-<!-- 카테고리 -->
-<section>
-  <div class="container">
-    <h2>카테고리별로 둘러보기</h2>
-    <p class="section-sub">뉴트리라이트 · 아티스트리 · 글리스터 등 · 인기 카테고리</p>
-    <div class="cat-grid">
-      <a href="products.html?cat=nutrition" class="cat-card">
-        <div class="cat-emoji">💊</div>
-        <div class="cat-name">영양건강</div>
-        <div class="cat-desc">뉴트리라이트</div>
-      </a>
-      <a href="products.html?cat=skin" class="cat-card">
-        <div class="cat-emoji">✨</div>
-        <div class="cat-name">스킨케어</div>
-        <div class="cat-desc">아티스트리</div>
-      </a>
-      <a href="products.html?cat=body" class="cat-card">
-        <div class="cat-emoji">🧴</div>
-        <div class="cat-name">바디케어</div>
-        <div class="cat-desc">샴푸·바디워시</div>
-      </a>
-      <a href="products.html?cat=home" class="cat-card">
-        <div class="cat-emoji">🏠</div>
-        <div class="cat-name">주방·가정</div>
-        <div class="cat-desc">정수기·조리기</div>
-      </a>
-    </div>
-  </div>
-</section>
+<div class="container">
 
-<!-- 가이드 -->
-<section class="guide-section">
-  <div class="container">
-    <h2>처음이신가요?</h2>
-    <p class="section-sub">회원가입·구매 · 큰 글씨로 쉽게 안내</p>
-    <div class="guide-grid">
-      <a href="pages/guide_amway_101.html" class="guide-card">
-        <div class="guide-icon">🌏</div>
-        <h3>암웨이가 뭔가요?</h3>
-        <p>5분이면 · 뭐가 뭔지 이해 · ABO·후원자·FAQ</p>
-      </a>
-      <a href="pages/guide_signup.html" class="guide-card">
-        <div class="guide-icon">📝</div>
-        <h3>회원가입 가이드</h3>
-        <p>5단계 · 큰 글씨 · 후원자 번호 안내</p>
-      </a>
-      <a href="pages/guide_purchase.html" class="guide-card">
-        <div class="guide-icon">🛒</div>
-        <h3>구매 가이드</h3>
-        <p>결제·배송·환불 · 첫 구매도 어렵지 않아요</p>
-      </a>
+  <!-- 후원자 번호 상시 카드 -->
+  <div class="sponsor-strip" onclick="copySponsor()">
+    <div class="icon">📌</div>
+    <div class="body">
+      <div class="label">회원가입 후원자 번호</div>
+      <div class="num" id="sponsorNum">7027465675</div>
     </div>
+    <button class="copy-btn" onclick="event.stopPropagation(); copySponsor()">복사</button>
   </div>
-</section>
 
-<!-- 소개 -->
-<section class="intro-section">
-  <div class="container intro-inner">
-    <h2>왜 JAY ABO인가요?</h2>
-    <p>암웨이 상품은 · 뉴트리라이트 <span class="highlight">180일 만족보증</span> · 세계적으로 검증된 품질입니다.</p>
-    <p>하지만 · 처음 접하시면 · 뭐가 뭔지 · 어떻게 시작할지 몰라 · 포기하시는 분들이 많아요.</p>
-    <p>준영은 · <strong>"제대로 알고 · 필요한 것만 · 부담 없이"</strong> · 이용하실 수 있게 도와드립니다.</p>
-    <div class="sponsor-box">
-      <p style="font-weight:700">회원가입 시 · 후원자 번호 입력하세요</p>
-      <div class="sponsor-num-big">7027465675</div>
-      <p style="font-size:14px;color:var(--jay-muted);margin-top:6px">이 번호가 있어야 · 저희가 도와드릴 수 있습니다</p>
-    </div>
-    <div style="margin-top:30px">
-      <a href="pages/guide_amway_101.html" class="btn-primary">암웨이 · 5분 안내 보기 →</a>
-    </div>
+  <!-- 3섹션 네비 (상품·부업·블로그) -->
+  <div class="section-nav">
+    <a href="#products" class="products" onclick="trackClick('nav_products')">
+      <span class="icon">🛒</span>
+      <span>상품</span>
+      <small>카탈로그</small>
+    </a>
+    <a href="/business/" class="business" onclick="trackClick('nav_business')">
+      <span class="icon">💼</span>
+      <span>부업</span>
+      <small>N잡 · ABO</small>
+    </a>
+    <a href="/blog/" class="blog" onclick="trackClick('nav_blog')">
+      <span class="icon">📖</span>
+      <span>블로그</span>
+      <small>정보 · 후기</small>
+    </a>
   </div>
-</section>
 
-<script src="layout/site.js"></script>
+  <!-- 상단 카톡 CTA -->
+  <a href="https://open.kakao.com/o/YOUR_OPENCHAT" class="cta-kakao-top" onclick="trackClick('kakao_top')">
+    💬 카톡 오픈채팅으로 상담·간편가입
+    <small>번호 알려주시면 자동 가입 링크 발송 (몇 초 완료)</small>
+  </a>
+  <div id="products"></div>
+
+  <!-- 상품 목록 -->
+  <div class="section-title">📋 추천 상품 카탈로그</div>
+  <div class="product-list">
+    <a href="pages/017_아티스트리_퓨처_글로우_래디언트_핏_쿠션_파운데이션_SPF50+_PA++.html" class="product-card" onclick="trackClick('product_017')">
+      <div class="thumb">
+        <div class="num-badge">#017</div>
+        <div class="thumb-placeholder">017</div>
+      </div>
+      <div class="body">
+        <div class="name">아티스트리 퓨처 글로우 래디언트 핏 쿠션 파운데이션 SPF50+/PA++++ 본품 23호 (15g x 2개입)</div>
+        <div class="cat">뷰티</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/016_아티스트리_고_바이브런트_라잇업_립_글로우_-_103_키스_미_크랜베리_.html" class="product-card" onclick="trackClick('product_016')">
+      <div class="thumb">
+        <div class="num-badge">#016</div>
+        <div class="thumb-placeholder">016</div>
+      </div>
+      <div class="body">
+        <div class="name">아티스트리 고 바이브런트 라잇업 립 글로우 - 103 키스 미 크랜베리 (5g)</div>
+        <div class="cat">뷰티</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/015_아티스트리_블러쉬_브러쉬.html" class="product-card" onclick="trackClick('product_015')">
+      <div class="thumb">
+        <div class="num-badge">#015</div>
+        <div class="thumb-placeholder">015</div>
+      </div>
+      <div class="body">
+        <div class="name">아티스트리 블러쉬 브러쉬</div>
+        <div class="cat">뷰티</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/014_이스프링_물병_1700ml.html" class="product-card" onclick="trackClick('product_014')">
+      <div class="thumb">
+        <div class="num-badge">#014</div>
+        <div class="thumb-placeholder">014</div>
+      </div>
+      <div class="body">
+        <div class="name">이스프링 물병 1700ml</div>
+        <div class="cat">홈</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/013_이스프링_정수기(전환기).html" class="product-card" onclick="trackClick('product_013')">
+      <div class="thumb">
+        <div class="num-badge">#013</div>
+        <div class="thumb-placeholder">013</div>
+      </div>
+      <div class="body">
+        <div class="name">이스프링 정수기(전환기)</div>
+        <div class="cat">홈</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/012_암웨이_퀸_인덕션_레인지_(2026).html" class="product-card" onclick="trackClick('product_012')">
+      <div class="thumb">
+        <div class="num-badge">#012</div>
+        <div class="thumb-placeholder">012</div>
+      </div>
+      <div class="body">
+        <div class="name">암웨이 퀸 인덕션 레인지 (2026)</div>
+        <div class="cat">홈</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/011_까페드다몬_디카페인_-_아라비카_프로틴믹스_(17.4g_x_15개입).html" class="product-card" onclick="trackClick('product_011')">
+      <div class="thumb">
+        <div class="num-badge">#011</div>
+        <div class="thumb-placeholder">011</div>
+      </div>
+      <div class="body">
+        <div class="name">까페드다몬 디카페인 - 아라비카 프로틴믹스 (17.4g x 15개입)</div>
+        <div class="cat">기타</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/010_정기품_초사리_곱창_돌김_(30g_x_3개입).html" class="product-card" onclick="trackClick('product_010')">
+      <div class="thumb">
+        <div class="num-badge">#010</div>
+        <div class="thumb-placeholder">010</div>
+      </div>
+      <div class="body">
+        <div class="name">정기품 초사리 곱창 돌김 (30g x 3개입)</div>
+        <div class="cat">기타</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/009_노브스갈라_알룰로스_세트.html" class="product-card" onclick="trackClick('product_009')">
+      <div class="thumb">
+        <div class="num-badge">#009</div>
+        <div class="thumb-placeholder">009</div>
+      </div>
+      <div class="body">
+        <div class="name">노브스갈라 알룰로스 세트</div>
+        <div class="cat">기타</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/008_정기품_초사리_곱창_돌김_(30g_x_3개입).html" class="product-card" onclick="trackClick('product_008')">
+      <div class="thumb">
+        <div class="num-badge">#008</div>
+        <div class="thumb-placeholder">008</div>
+      </div>
+      <div class="body">
+        <div class="name">정기품 초사리 곱창 돌김 (30g x 3개입)</div>
+        <div class="cat">기타</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/007_진품_백명란_세트.html" class="product-card" onclick="trackClick('product_007')">
+      <div class="thumb">
+        <div class="num-badge">#007</div>
+        <div class="thumb-placeholder">007</div>
+      </div>
+      <div class="body">
+        <div class="name">진품 백명란 세트</div>
+        <div class="cat">기타</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/006_노브스갈라_올리브유_통살_참치_세트.html" class="product-card" onclick="trackClick('product_006')">
+      <div class="thumb">
+        <div class="num-badge">#006</div>
+        <div class="thumb-placeholder">006</div>
+      </div>
+      <div class="body">
+        <div class="name">노브스갈라 올리브유 통살 참치 세트</div>
+        <div class="cat">기타</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/005_리플렉서_1699.html" class="product-card" onclick="trackClick('product_005')">
+      <div class="thumb">
+        <div class="num-badge">#005</div>
+        <div class="thumb-placeholder">005</div>
+      </div>
+      <div class="body">
+        <div class="name">리플렉서 1699</div>
+        <div class="cat">건강</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/004_리플렉서_1699_스마트페이.html" class="product-card" onclick="trackClick('product_004')">
+      <div class="thumb">
+        <div class="num-badge">#004</div>
+        <div class="thumb-placeholder">004</div>
+      </div>
+      <div class="body">
+        <div class="name">리플렉서 1699 스마트페이</div>
+        <div class="cat">건강</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/003_옵티미스트.html" class="product-card" onclick="trackClick('product_003')">
+      <div class="thumb">
+        <div class="num-badge">#003</div>
+        <div class="thumb-placeholder">003</div>
+      </div>
+      <div class="body">
+        <div class="name">옵티미스트</div>
+        <div class="cat">건강</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/002_옵티미스트_워셔블_필터.html" class="product-card" onclick="trackClick('product_002')">
+      <div class="thumb">
+        <div class="num-badge">#002</div>
+        <div class="thumb-placeholder">002</div>
+      </div>
+      <div class="body">
+        <div class="name">옵티미스트 워셔블 필터</div>
+        <div class="cat">건강</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/001_아세로라_C_(300정,_100일분).html" class="product-card" onclick="trackClick('product_001')">
+      <div class="thumb">
+        <div class="num-badge">#001</div>
+        <div class="thumb-placeholder">001</div>
+      </div>
+      <div class="body">
+        <div class="name">아세로라 C (300정, 100일분)</div>
+        <div class="cat">건강</div>
+        
+      </div>
+    </a></div>
+
+  <footer>
+    ※ 저는 한국암웨이 ABO(회원번호 7027465675)입니다.<br>
+    본 페이지는 개인 경험을 공유하는 후기 페이지입니다.<br>
+    구매·소득에는 개인차가 있을 수 있습니다.<br>
+    <span style="opacity: 0.7">
+      Total 17 products · Updated 2026-09-18 08:04
+    </span>
+  </footer>
+
+</div>
+
+<div class="toast" id="toast">복사됐어요! 🎉</div>
+
+<script>
+const SPONSOR = "7027465675";
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+async function copyToClipboard(text) {
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+      return true;
+    }
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.focus(); ta.select();
+    const ok = document.execCommand('copy');
+    document.body.removeChild(ta);
+    return ok;
+  } catch (e) { return false; }
+}
+
+async function copySponsor() {
+  const ok = await copyToClipboard(SPONSOR);
+  if (ok) {
+    showToast('후원자 번호 복사됐어요! 🎉');
+    trackClick('sponsor_copy_bio');
+  } else {
+    showToast('복사 실패 — 번호를 손으로 선택해 복사해주세요');
+  }
+}
+
+function trackClick(action) {
+  try {
+    const key = 'jayabo_clicks';
+    const now = new Date().toISOString();
+    const raw = localStorage.getItem(key);
+    const arr = raw ? JSON.parse(raw) : [];
+    arr.push({
+      page: 'bio_link',
+      action: action,
+      ts: now,
+      ua: navigator.userAgent.substring(0, 60),
+    });
+    localStorage.setItem(key, JSON.stringify(arr.slice(-100)));
+  } catch (e) { /* silent */ }
+}
+
+trackClick('view');
+</script>
+
 </body>
 </html>
