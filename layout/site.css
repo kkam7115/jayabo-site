@@ -1,0 +1,95 @@
+/* JAY ABO · 공통 헤더/푸터 스타일 */
+:root {
+  --jay-brand: #002855;
+  --jay-brand-2: #003d82;
+  --jay-accent: #ff6b35;
+  --jay-text: #111827;
+  --jay-muted: #6b7280;
+  --jay-border: #e5e7eb;
+  --jay-bg: #f7f8fb;
+  --jay-card: #ffffff;
+}
+/* 헤더 · 네비게이션 */
+.jay-header {
+  position: sticky; top: 0; z-index: 100;
+  background: #fff; border-bottom: 1px solid var(--jay-border);
+  padding: 12px 20px;
+}
+.jay-header-inner {
+  max-width: 1120px; margin: 0 auto;
+  display: flex; align-items: center; gap: 18px;
+}
+.jay-logo {
+  font-size: 20px; font-weight: 800; color: var(--jay-brand);
+  text-decoration: none; white-space: nowrap;
+}
+.jay-logo:hover { color: var(--jay-brand-2); }
+.jay-nav {
+  display: flex; gap: 4px; flex: 1;
+}
+.jay-nav a {
+  padding: 8px 14px; border-radius: 8px;
+  color: var(--jay-text); text-decoration: none; font-weight: 600; font-size: 14px;
+  transition: background 0.15s;
+}
+.jay-nav a:hover { background: #f0f4f8; }
+.jay-nav a.active {
+  background: var(--jay-brand); color: #fff;
+}
+.jay-cta-kakao {
+  background: #fee500; color: #191919; padding: 8px 16px;
+  border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 13px;
+  white-space: nowrap;
+}
+.jay-cta-kakao:hover { background: #ffd800; }
+
+/* 모바일 · 햄버거 */
+.jay-hamburger {
+  display: none; background: none; border: none; cursor: pointer;
+  padding: 6px 8px; font-size: 22px;
+}
+@media (max-width: 720px) {
+  .jay-hamburger { display: block; }
+  .jay-nav {
+    display: none;
+    position: absolute; top: 100%; left: 0; right: 0;
+    background: #fff; flex-direction: column; padding: 8px 12px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+  }
+  .jay-nav.open { display: flex; }
+  .jay-cta-kakao { padding: 6px 12px; font-size: 12px; }
+  .jay-logo { font-size: 17px; }
+}
+
+/* 푸터 */
+.jay-footer {
+  background: #1a1e2c; color: #cbd2dc;
+  padding: 40px 20px 24px; margin-top: 60px;
+}
+.jay-footer-inner {
+  max-width: 1120px; margin: 0 auto;
+}
+.jay-footer-grid {
+  display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 30px; margin-bottom: 30px;
+}
+@media (max-width: 720px) {
+  .jay-footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+}
+.jay-footer h4 {
+  color: #fff; font-size: 14px; font-weight: 700;
+  margin-bottom: 12px;
+}
+.jay-footer ul { list-style: none; padding: 0; margin: 0; }
+.jay-footer li { margin-bottom: 8px; }
+.jay-footer a { color: #cbd2dc; text-decoration: none; font-size: 13px; }
+.jay-footer a:hover { color: #fff; }
+.jay-footer-bottom {
+  border-top: 1px solid #2d3441; padding-top: 20px;
+  text-align: center; font-size: 12px; color: #8a92a3;
+}
+.jay-sponsor-badge {
+  display: inline-block; background: rgba(255,255,255,0.05);
+  padding: 4px 10px; border-radius: 4px; font-family: monospace;
+  color: #ff9d75; margin-top: 6px;
+}
