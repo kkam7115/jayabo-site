@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>가이드 · JAY ABO</title>
+<meta name="description" content="암웨이 처음이신 분을 위한 · 회원가입·구매·기본 안내 가이드">
+<link rel="stylesheet" href="_layout/site.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Malgun Gothic','Apple SD Gothic Neo',sans-serif; background: var(--jay-bg); color: var(--jay-text); line-height: 1.7; }
+  .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+  .page-title { text-align: center; margin-bottom: 34px; }
+  .page-title h1 { font-size: 30px; font-weight: 800; margin-bottom: 8px; }
+  .page-title p { color: var(--jay-muted); font-size: 16px; }
+
+  .guide-list { display: grid; gap: 18px; }
+  .guide-item {
+    background: #fff; border: 1px solid var(--jay-border); border-radius: 16px;
+    padding: 28px 26px; text-decoration: none; color: var(--jay-text);
+    display: flex; gap: 20px; align-items: center;
+    transition: all 0.15s;
+  }
+  .guide-item:hover { border-color: var(--jay-brand); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,40,85,0.08); }
+  .guide-icon {
+    font-size: 46px; flex-shrink: 0;
+    width: 72px; height: 72px; background: #f0f4f8; border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .guide-content h3 { font-size: 20px; font-weight: 700; margin-bottom: 6px; color: var(--jay-brand); }
+  .guide-content p { color: var(--jay-muted); font-size: 14px; line-height: 1.6; }
+  .arrow { margin-left: auto; font-size: 22px; color: var(--jay-brand); flex-shrink: 0; }
+
+  @media (max-width: 480px) {
+    .guide-item { flex-direction: column; text-align: center; }
+    .arrow { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="page-title">
+    <h1>📚 가이드</h1>
+    <p>암웨이 처음이신가요? · 큰 글씨로 · 차근차근</p>
+  </div>
+
+  <div class="guide-list">
+    <a href="pages/guide_amway_101.html" class="guide-item">
+      <div class="guide-icon">🌏</div>
+      <div class="guide-content">
+        <h3>암웨이 처음이신가요?</h3>
+        <p>5분이면 · 뭐가 뭔지 이해 · ABO·후원자·자주 묻는 질문 완벽 정리</p>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+    <a href="pages/guide_signup.html" class="guide-item">
+      <div class="guide-icon">📝</div>
+      <div class="guide-content">
+        <h3>회원가입 가이드</h3>
+        <p>5단계 · 큰 글씨 · 후원자 번호 입력 안내까지 · 5분이면 완료</p>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+    <a href="pages/guide_purchase.html" class="guide-item">
+      <div class="guide-icon">🛒</div>
+      <div class="guide-content">
+        <h3>구매 가이드</h3>
+        <p>상품 찾기 · 결제 · 배송 · 환불 · 첫 구매도 어렵지 않아요</p>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+  </div>
+
+  <div style="text-align:center;margin-top:40px;padding:24px;background:#fff3cd;border-radius:12px">
+    <p style="font-weight:700;color:#856404">
+      💬 궁금한 점 있으시면 · 후원자 <strong>준영 (7027465675)</strong>에게 카톡 주세요
+    </p>
+  </div>
+</div>
+
+<script src="_layout/site.js"></script>
+</body>
+</html>
