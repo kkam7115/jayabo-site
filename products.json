@@ -259,5 +259,14 @@
     "page": "pages/029_정기품_자연담은_아카시아꿀_세트.html",
     "category": "기타",
     "sub_category": "junggipoom"
+  },
+  {
+    "catalog": "030",
+    "name": "XS 클래식 블랙 (6캔)",
+    "price": 14500,
+    "image": "assets/030.jpg",
+    "page": "pages/030_XS_클래식_블랙_(6캔).html",
+    "category": "건강",
+    "sub_category": "xs-energy-drink"
   }
 ]
