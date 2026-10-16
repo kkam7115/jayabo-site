@@ -244,12 +244,30 @@
   },
   {
     "catalog": "028",
+    "name": "XS 클래식 블랙 (6캔)",
+    "price": 14500,
+    "image": "assets/028.jpg",
+    "page": "pages/028_XS_클래식_블랙_(6캔).html",
+    "category": "건강",
+    "sub_category": "xs-energy-drink"
+  },
+  {
+    "catalog": "028",
     "name": "정기품 발효 어진미 세트",
     "price": 18900,
     "image": "assets/028.jpg",
     "page": "pages/028_정기품_발효_어진미_세트.html",
     "category": "기타",
     "sub_category": "junggipoom"
+  },
+  {
+    "catalog": "029",
+    "name": "XS 클래식 블랙 (30캔)",
+    "price": 69500,
+    "image": "assets/029.jpg",
+    "page": "pages/029_XS_클래식_블랙_(30캔).html",
+    "category": "건강",
+    "sub_category": "xs-energy-drink"
   },
   {
     "catalog": "029",
@@ -266,6 +284,15 @@
     "price": 14500,
     "image": "assets/030.jpg",
     "page": "pages/030_XS_클래식_블랙_(6캔).html",
+    "category": "건강",
+    "sub_category": "xs-energy-drink"
+  },
+  {
+    "catalog": "031",
+    "name": "XS 클래식 블랙 출시 프로모션",
+    "price": 69500,
+    "image": "assets/031.jpg",
+    "page": "pages/031_XS_클래식_블랙_출시_프로모션.html",
     "category": "건강",
     "sub_category": "xs-energy-drink"
   }
