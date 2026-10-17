@@ -288,6 +288,15 @@
     "sub_category": "xs-energy-drink"
   },
   {
+    "catalog": "030",
+    "name": "XS 클래식 블랙 출시 프로모션",
+    "price": 69500,
+    "image": "assets/030.jpg",
+    "page": "pages/030_XS_클래식_블랙_출시_프로모션.html",
+    "category": "건강",
+    "sub_category": "xs-energy-drink"
+  },
+  {
     "catalog": "031",
     "name": "XS 클래식 블랙 출시 프로모션",
     "price": 69500,
@@ -295,5 +304,23 @@
     "page": "pages/031_XS_클래식_블랙_출시_프로모션.html",
     "category": "건강",
     "sub_category": "xs-energy-drink"
+  },
+  {
+    "catalog": "031",
+    "name": "마이랩 마이크로바이옴 테스트 키트 라이트 (재분석 전용)",
+    "price": 109000,
+    "image": "assets/031.jpg",
+    "page": "pages/031_마이랩_마이크로바이옴_테스트_키트_라이트_(재분석_전용).html",
+    "category": "건강",
+    "sub_category": "mylab-microbiome"
+  },
+  {
+    "catalog": "032",
+    "name": "빈틈없는 프로모션 2-1",
+    "price": 436000,
+    "image": "assets/032.jpg",
+    "page": "pages/032_빈틈없는_프로모션_2-1.html",
+    "category": "건강",
+    "sub_category": "probiotic-fibers"
   }
 ]
