@@ -322,5 +322,23 @@
     "page": "pages/032_빈틈없는_프로모션_2-1.html",
     "category": "건강",
     "sub_category": "probiotic-fibers"
+  },
+  {
+    "catalog": "033",
+    "name": "프로바이오틱스 (90포, 90일분)",
+    "price": 132000,
+    "image": "assets/033.jpg",
+    "page": "pages/033_프로바이오틱스_(90포,_90일분).html",
+    "category": "건강",
+    "sub_category": "probiotic-fibers"
+  },
+  {
+    "catalog": "034",
+    "name": "빈틈없는 프로모션 1",
+    "price": 418000,
+    "image": "assets/034.jpg",
+    "page": "pages/034_빈틈없는_프로모션_1.html",
+    "category": "건강",
+    "sub_category": "probiotic-fibers"
   }
 ]
