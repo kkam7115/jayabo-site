@@ -51,7 +51,7 @@
     "image": "assets/006.jpg",
     "page": "pages/006_노브스갈라_올리브유_통살_참치_세트.html",
     "category": "기타",
-    "sub_category": "nobsgala"
+    "sub_category": ""
   },
   {
     "catalog": "007",
@@ -60,7 +60,7 @@
     "image": "assets/007.jpg",
     "page": "pages/007_진품_백명란_세트.html",
     "category": "기타",
-    "sub_category": "junggipoom"
+    "sub_category": ""
   },
   {
     "catalog": "008",
@@ -69,7 +69,7 @@
     "image": "assets/008.jpg",
     "page": "pages/008_정기품_초사리_곱창_돌김_(30g_x_3개입).html",
     "category": "기타",
-    "sub_category": "junggipoom"
+    "sub_category": ""
   },
   {
     "catalog": "009",
@@ -78,7 +78,7 @@
     "image": "assets/009.jpg",
     "page": "pages/009_노브스갈라_알룰로스_세트.html",
     "category": "기타",
-    "sub_category": "nobsgala"
+    "sub_category": ""
   },
   {
     "catalog": "011",
@@ -87,7 +87,7 @@
     "image": "assets/011.jpg",
     "page": "pages/011_까페드다몬_디카페인_-_아라비카_프로틴믹스_(17.4g_x_15개입).html",
     "category": "기타",
-    "sub_category": "cafe-de-damon"
+    "sub_category": ""
   },
   {
     "catalog": "012",
@@ -95,8 +95,8 @@
     "price": 466000,
     "image": "assets/012.jpg",
     "page": "pages/012_암웨이_퀸_인덕션_레인지_(2026).html",
-    "category": "홈",
-    "sub_category": "amway-queen-ti"
+    "category": "기타",
+    "sub_category": ""
   },
   {
     "catalog": "013",
@@ -104,8 +104,8 @@
     "price": 1488000,
     "image": "assets/013.jpg",
     "page": "pages/013_이스프링_정수기(전환기).html",
-    "category": "홈",
-    "sub_category": "espring"
+    "category": "기타",
+    "sub_category": ""
   },
   {
     "catalog": "014",
@@ -122,8 +122,8 @@
     "price": 16000,
     "image": "assets/015.jpg",
     "page": "pages/015_아티스트리_블러쉬_브러쉬.html",
-    "category": "뷰티",
-    "sub_category": "beauty-accessories"
+    "category": "기타",
+    "sub_category": ""
   },
   {
     "catalog": "016",
@@ -131,7 +131,7 @@
     "price": 35000,
     "image": "assets/016.jpg",
     "page": "pages/016_아티스트리_고_바이브런트_라잇업_립_글로우_-_103_키스_미_크랜베리_.html",
-    "category": "뷰티",
+    "category": "기타",
     "sub_category": ""
   },
   {
@@ -140,7 +140,7 @@
     "price": 54000,
     "image": "assets/017.jpg",
     "page": "pages/017_아티스트리_퓨처_글로우_래디언트_핏_쿠션_파운데이션_SPF50+_PA++.html",
-    "category": "뷰티",
+    "category": "기타",
     "sub_category": ""
   },
   {
@@ -239,8 +239,8 @@
     "price": 12800,
     "image": "assets/027.jpg",
     "page": "pages/027_이스프링_물병_1700ml.html",
-    "category": "홈",
-    "sub_category": "espring"
+    "category": "기타",
+    "sub_category": ""
   },
   {
     "catalog": "028",
@@ -248,8 +248,8 @@
     "price": 14500,
     "image": "assets/028.jpg",
     "page": "pages/028_XS_클래식_블랙_(6캔).html",
-    "category": "건강",
-    "sub_category": "xs-energy-drink"
+    "category": "기타",
+    "sub_category": ""
   },
   {
     "catalog": "028",
@@ -266,8 +266,8 @@
     "price": 69500,
     "image": "assets/029.jpg",
     "page": "pages/029_XS_클래식_블랙_(30캔).html",
-    "category": "건강",
-    "sub_category": "xs-energy-drink"
+    "category": "기타",
+    "sub_category": ""
   },
   {
     "catalog": "029",
@@ -284,8 +284,8 @@
     "price": 14500,
     "image": "assets/030.jpg",
     "page": "pages/030_XS_클래식_블랙_(6캔).html",
-    "category": "건강",
-    "sub_category": "xs-energy-drink"
+    "category": "기타",
+    "sub_category": ""
   },
   {
     "catalog": "030",
@@ -293,8 +293,8 @@
     "price": 69500,
     "image": "assets/030.jpg",
     "page": "pages/030_XS_클래식_블랙_출시_프로모션.html",
-    "category": "건강",
-    "sub_category": "xs-energy-drink"
+    "category": "기타",
+    "sub_category": ""
   },
   {
     "catalog": "031",
@@ -302,8 +302,8 @@
     "price": 69500,
     "image": "assets/031.jpg",
     "page": "pages/031_XS_클래식_블랙_출시_프로모션.html",
-    "category": "건강",
-    "sub_category": "xs-energy-drink"
+    "category": "기타",
+    "sub_category": ""
   },
   {
     "catalog": "031",
@@ -311,8 +311,8 @@
     "price": 109000,
     "image": "assets/031.jpg",
     "page": "pages/031_마이랩_마이크로바이옴_테스트_키트_라이트_(재분석_전용).html",
-    "category": "건강",
-    "sub_category": "mylab-microbiome"
+    "category": "기타",
+    "sub_category": ""
   },
   {
     "catalog": "032",
@@ -320,8 +320,8 @@
     "price": 436000,
     "image": "assets/032.jpg",
     "page": "pages/032_빈틈없는_프로모션_2-1.html",
-    "category": "건강",
-    "sub_category": "probiotic-fibers"
+    "category": "기타",
+    "sub_category": ""
   },
   {
     "catalog": "033",
@@ -329,8 +329,8 @@
     "price": 132000,
     "image": "assets/033.jpg",
     "page": "pages/033_프로바이오틱스_(90포,_90일분).html",
-    "category": "건강",
-    "sub_category": "probiotic-fibers"
+    "category": "기타",
+    "sub_category": ""
   },
   {
     "catalog": "034",
@@ -338,7 +338,16 @@
     "price": 418000,
     "image": "assets/034.jpg",
     "page": "pages/034_빈틈없는_프로모션_1.html",
+    "category": "기타",
+    "sub_category": ""
+  },
+  {
+    "catalog": "035",
+    "name": "옵티미스트 안심촉촉 프로모션",
+    "price": 450000,
+    "image": "assets/035.jpg",
+    "page": "pages/035_옵티미스트_안심촉촉_프로모션.html",
     "category": "건강",
-    "sub_category": "probiotic-fibers"
+    "sub_category": "optimist"
   }
 ]
