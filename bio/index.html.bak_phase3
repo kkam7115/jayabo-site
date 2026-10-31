@@ -1,0 +1,881 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>JAY ABO · 상품 카탈로그</title>
+<meta name="description" content="JAY ABO의 추천 상품 · 후기 · 카톡 상담">
+<meta property="og:title" content="JAY ABO · 상품 카탈로그">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<style>
+:root {
+  --brand: #002855;
+  --brand-2: #003d82;
+  --accent: #ff6b35;
+  --bg: #f7f8fb;
+  --card: #ffffff;
+  --border: #e5e7eb;
+  --text: #111827;
+  --muted: #6b7280;
+  --success: #10b981;
+  --kakao: #fee500;
+  --kakao-text: #191919;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --border: #334155;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+  }
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.55;
+  -webkit-tap-highlight-color: transparent;
+}
+img { max-width: 100%; height: auto; display: block; }
+
+.container {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 16px 60px;
+}
+
+/* 헤더 */
+header.profile {
+  padding: 32px 20px 24px;
+  text-align: center;
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  color: white;
+}
+header.profile .avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  margin: 0 auto 16px;
+  display: grid;
+  place-items: center;
+  font-size: 42px;
+}
+header.profile h1 {
+  font-size: 22px;
+  font-weight: 700;
+}
+header.profile .handle {
+  font-size: 14px;
+  opacity: 0.85;
+  margin-top: 4px;
+}
+header.profile .bio {
+  margin-top: 12px;
+  font-size: 14px;
+  opacity: 0.95;
+  line-height: 1.6;
+  padding: 0 12px;
+}
+
+/* 후원자 번호 상시 카드 */
+.sponsor-strip {
+  background: linear-gradient(135deg, #fff7ed, #ffedd5);
+  border: 2px solid var(--accent);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin: 20px 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+@media (prefers-color-scheme: dark) {
+  .sponsor-strip {
+    background: linear-gradient(135deg, #431407, #7c2d12);
+    color: white;
+  }
+}
+.sponsor-strip:active { transform: scale(0.99); }
+.sponsor-strip .icon { font-size: 24px; }
+.sponsor-strip .body { flex: 1; }
+.sponsor-strip .label {
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.sponsor-strip .num {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--brand);
+  letter-spacing: 1px;
+  font-variant-numeric: tabular-nums;
+}
+@media (prefers-color-scheme: dark) {
+  .sponsor-strip .num { color: #fdba74; }
+}
+.sponsor-strip .copy-btn {
+  padding: 8px 14px;
+  background: var(--brand);
+  color: white;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  border: none;
+}
+
+/* CTA 상단 카톡 버튼 */
+.cta-kakao-top {
+  display: block;
+  background: var(--kakao);
+  color: var(--kakao-text);
+  padding: 14px;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: 700;
+  text-decoration: none;
+  margin-bottom: 24px;
+  transition: transform 0.15s;
+}
+.cta-kakao-top:active { transform: scale(0.99); }
+.cta-kakao-top small {
+  display: block;
+  font-weight: 500;
+  font-size: 12px;
+  margin-top: 3px;
+  opacity: 0.75;
+}
+
+/* 3섹션 네비 (상품·부업·블로그) */
+.section-nav {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.section-nav a {
+  padding: 16px 12px;
+  border-radius: 14px;
+  text-decoration: none;
+  text-align: center;
+  font-weight: 700;
+  font-size: 14px;
+  border: 2px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  transition: all 0.15s;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+}
+.section-nav a:hover, .section-nav a:active {
+  transform: translateY(-2px);
+  border-color: var(--brand);
+}
+.section-nav a .icon { font-size: 24px; }
+.section-nav a small { font-size: 10px; font-weight: 500; color: var(--muted); }
+.section-nav a.products { border-color: color-mix(in srgb, var(--brand) 40%, transparent); }
+.section-nav a.business { border-color: color-mix(in srgb, var(--accent) 40%, transparent); }
+.section-nav a.blog { border-color: color-mix(in srgb, var(--success) 40%, transparent); }
+
+/* 섹션 제목 */
+.section-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 1px;
+  margin: 24px 0 12px;
+  text-transform: uppercase;
+}
+
+/* 상품 진열 (2열 그리드) */
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.product-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--text);
+  transition: transform 0.15s, box-shadow 0.15s;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.product-card:hover {
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+.product-card:active { transform: scale(0.98); }
+.product-card .thumb {
+  aspect-ratio: 1 / 1;
+  background: linear-gradient(135deg, #eef2f7, #dbe4ee);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  position: relative;
+}
+@media (prefers-color-scheme: dark) {
+  .product-card .thumb {
+    background: linear-gradient(135deg, #334155, #1e293b);
+  }
+}
+.product-card .thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.product-card .thumb-placeholder {
+  font-size: 42px;
+  color: var(--brand);
+  opacity: 0.35;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+@media (prefers-color-scheme: dark) {
+  .product-card .thumb-placeholder { color: #93c5fd; opacity: 0.5; }
+}
+.product-card .num-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: var(--brand);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+.product-card .body {
+  padding: 12px 12px 14px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.product-card .name {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--text);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.product-card .cat {
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 500;
+}
+.product-card .desc {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* 화면 좁을 때 1열로 폴백 (선택) */
+@media (max-width: 359px) {
+  .product-list { grid-template-columns: 1fr; }
+}
+
+/* 빈 상태 */
+.empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* 푸터 */
+footer {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.7;
+}
+
+/* 토스트 */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(120%);
+  background: var(--text);
+  color: var(--bg);
+  padding: 14px 22px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+  z-index: 100;
+  pointer-events: none;
+}
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+}
+</style>
+</head>
+<body>
+
+<header class="profile">
+  <div class="avatar">👤</div>
+  <h1>JAY ABO</h1>
+  <div class="handle">@jayabo</div>
+  <div class="bio">매일 소개하는 검증 제품·리얼 후기<br>궁금하신 점은 언제든 카톡·DM으로 편하게</div>
+</header>
+
+<div class="container">
+
+  <!-- 후원자 번호 상시 카드 -->
+  <div class="sponsor-strip" onclick="copySponsor()">
+    <div class="icon">📌</div>
+    <div class="body">
+      <div class="label">회원가입 후원자 번호</div>
+      <div class="num" id="sponsorNum">7027465675</div>
+    </div>
+    <button class="copy-btn" onclick="event.stopPropagation(); copySponsor()">복사</button>
+  </div>
+
+  <!-- 3섹션 네비 (상품·부업·블로그) -->
+  <div class="section-nav">
+    <a href="#products" class="products" onclick="trackClick('nav_products')">
+      <span class="icon">🛒</span>
+      <span>상품</span>
+      <small>카탈로그</small>
+    </a>
+    <a href="/business/" class="business" onclick="trackClick('nav_business')">
+      <span class="icon">💼</span>
+      <span>부업</span>
+      <small>N잡 · ABO</small>
+    </a>
+    <a href="/blog/" class="blog" onclick="trackClick('nav_blog')">
+      <span class="icon">📖</span>
+      <span>블로그</span>
+      <small>정보 · 후기</small>
+    </a>
+  </div>
+
+  <!-- 상단 카톡 CTA -->
+  <a href="https://open.kakao.com/o/YOUR_OPENCHAT" class="cta-kakao-top" onclick="trackClick('kakao_top')">
+    💬 카톡 오픈채팅으로 상담·간편가입
+    <small>번호 알려주시면 자동 가입 링크 발송 (몇 초 완료)</small>
+  </a>
+  <div id="products"></div>
+
+  <!-- 상품 목록 -->
+  <div class="section-title">📋 추천 상품 카탈로그</div>
+  <div class="product-list">
+    <a href="pages/035_환승에어_엣모스피어_필터_패키지.html" class="product-card" onclick="trackClick('product_035')">
+      <div class="thumb">
+        <div class="num-badge">#035</div>
+        <div class="thumb-placeholder">035</div>
+      </div>
+      <div class="body">
+        <div class="name">환승에어 엣모스피어 필터 패키지</div>
+        <div class="cat">홈</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/034_옵티미스트_안심촉촉_프로모션.html" class="product-card" onclick="trackClick('product_034')">
+      <div class="thumb">
+        <div class="num-badge">#034</div>
+        <div class="thumb-placeholder">034</div>
+      </div>
+      <div class="body">
+        <div class="name">옵티미스트 안심촉촉 프로모션</div>
+        <div class="cat">건강</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/033_프로바이오틱스_(90포,_90일분).html" class="product-card" onclick="trackClick('product_033')">
+      <div class="thumb">
+        <div class="num-badge">#033</div>
+        <div class="thumb-placeholder">033</div>
+      </div>
+      <div class="body">
+        <div class="name">프로바이오틱스 (90포, 90일분)</div>
+        <div class="cat">건강</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/032_빈틈없는_프로모션_2-1.html" class="product-card" onclick="trackClick('product_032')">
+      <div class="thumb">
+        <div class="num-badge">#032</div>
+        <div class="thumb-placeholder">032</div>
+      </div>
+      <div class="body">
+        <div class="name">빈틈없는 프로모션 2-1</div>
+        <div class="cat">건강</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/031_마이랩_마이크로바이옴_테스트_키트_라이트_(재분석_전용).html" class="product-card" onclick="trackClick('product_031')">
+      <div class="thumb">
+        <div class="num-badge">#031</div>
+        <div class="thumb-placeholder">031</div>
+      </div>
+      <div class="body">
+        <div class="name">마이랩 마이크로바이옴 테스트 키트 라이트 (재분석 전용)</div>
+        <div class="cat">건강</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/030_XS_클래식_블랙_출시_프로모션.html" class="product-card" onclick="trackClick('product_030')">
+      <div class="thumb">
+        <div class="num-badge">#030</div>
+        <div class="thumb-placeholder">030</div>
+      </div>
+      <div class="body">
+        <div class="name">XS 클래식 블랙 출시 프로모션</div>
+        <div class="cat">건강</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/029_XS_클래식_블랙_(30캔).html" class="product-card" onclick="trackClick('product_029')">
+      <div class="thumb">
+        <div class="num-badge">#029</div>
+        <div class="thumb-placeholder">029</div>
+      </div>
+      <div class="body">
+        <div class="name">XS 클래식 블랙 (30캔)</div>
+        <div class="cat">건강</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/028_XS_클래식_블랙_(6캔).html" class="product-card" onclick="trackClick('product_028')">
+      <div class="thumb">
+        <div class="num-badge">#028</div>
+        <div class="thumb-placeholder">028</div>
+      </div>
+      <div class="body">
+        <div class="name">XS 클래식 블랙 (6캔)</div>
+        <div class="cat">건강</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/027_앨로케어_(180정,_30일분).html" class="product-card" onclick="trackClick('product_027')">
+      <div class="thumb">
+        <div class="num-badge">#027</div>
+        <div class="thumb-placeholder">027</div>
+      </div>
+      <div class="body">
+        <div class="name">앨로케어 (180정, 30일분)</div>
+        <div class="cat">건강</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/026_뉴트리라이트_쇼핑백(대).html" class="product-card" onclick="trackClick('product_026')">
+      <div class="thumb">
+        <div class="num-badge">#026</div>
+        <div class="thumb-placeholder">026</div>
+      </div>
+      <div class="body">
+        <div class="name">뉴트리라이트 쇼핑백(대)</div>
+        <div class="cat">건강</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/025_디쉬_드랍스_식기세척기_세제_헤리티지_프로모션.html" class="product-card" onclick="trackClick('product_025')">
+      <div class="thumb">
+        <div class="num-badge">#025</div>
+        <div class="thumb-placeholder">025</div>
+      </div>
+      <div class="body">
+        <div class="name">디쉬 드랍스 식기세척기 세제 헤리티지 프로모션</div>
+        <div class="cat">홈</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/024_원포원_추석_프로모션_-_까페드다몬.html" class="product-card" onclick="trackClick('product_024')">
+      <div class="thumb">
+        <div class="num-badge">#024</div>
+        <div class="thumb-placeholder">024</div>
+      </div>
+      <div class="body">
+        <div class="name">원포원 추석 프로모션 - 까페드다몬</div>
+        <div class="cat">기타</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/023_정기품_우리바다_손질삼치_(1.2kg).html" class="product-card" onclick="trackClick('product_023')">
+      <div class="thumb">
+        <div class="num-badge">#023</div>
+        <div class="thumb-placeholder">023</div>
+      </div>
+      <div class="body">
+        <div class="name">정기품 우리바다 손질삼치 (1.2kg)</div>
+        <div class="cat">기타</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/022_아보카도리얼_엑스트라버진_아보카도유.html" class="product-card" onclick="trackClick('product_022')">
+      <div class="thumb">
+        <div class="num-badge">#022</div>
+        <div class="thumb-placeholder">022</div>
+      </div>
+      <div class="body">
+        <div class="name">아보카도리얼 엑스트라버진 아보카도유</div>
+        <div class="cat">기타</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/021_정기품_자연담은_아카시아꿀_세트.html" class="product-card" onclick="trackClick('product_021')">
+      <div class="thumb">
+        <div class="num-badge">#021</div>
+        <div class="thumb-placeholder">021</div>
+      </div>
+      <div class="body">
+        <div class="name">정기품 자연담은 아카시아꿀 세트</div>
+        <div class="cat">기타</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/020_아티스트리_스킨_뉴트리션_모이스처라이징_오메가_플러스_시트마스크_(5매입.html" class="product-card" onclick="trackClick('product_020')">
+      <div class="thumb">
+        <div class="num-badge">#020</div>
+        <div class="thumb-placeholder">020</div>
+      </div>
+      <div class="body">
+        <div class="name">아티스트리 스킨 뉴트리션 모이스처라이징 오메가 플러스 시트마스크 (5매입)</div>
+        <div class="cat">뷰티</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/019_정기품_발효_어진미_세트.html" class="product-card" onclick="trackClick('product_019')">
+      <div class="thumb">
+        <div class="num-badge">#019</div>
+        <div class="thumb-placeholder">019</div>
+      </div>
+      <div class="body">
+        <div class="name">정기품 발효 어진미 세트</div>
+        <div class="cat">기타</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/018_아보카도리얼_엑스트라버진_아보카도유_세트.html" class="product-card" onclick="trackClick('product_018')">
+      <div class="thumb">
+        <div class="num-badge">#018</div>
+        <div class="thumb-placeholder">018</div>
+      </div>
+      <div class="body">
+        <div class="name">아보카도리얼 엑스트라버진 아보카도유 세트</div>
+        <div class="cat">기타</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/017_아티스트리_퓨처_글로우_래디언트_핏_쿠션_파운데이션_SPF50+_PA++.html" class="product-card" onclick="trackClick('product_017')">
+      <div class="thumb">
+        <div class="num-badge">#017</div>
+        <div class="thumb-placeholder">017</div>
+      </div>
+      <div class="body">
+        <div class="name">아티스트리 퓨처 글로우 래디언트 핏 쿠션 파운데이션 SPF50+/PA++++ 본품 23호 (15g x 2개입)</div>
+        <div class="cat">뷰티</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/016_아티스트리_고_바이브런트_라잇업_립_글로우_-_103_키스_미_크랜베리_.html" class="product-card" onclick="trackClick('product_016')">
+      <div class="thumb">
+        <div class="num-badge">#016</div>
+        <div class="thumb-placeholder">016</div>
+      </div>
+      <div class="body">
+        <div class="name">아티스트리 고 바이브런트 라잇업 립 글로우 - 103 키스 미 크랜베리 (5g)</div>
+        <div class="cat">뷰티</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/015_아티스트리_블러쉬_브러쉬.html" class="product-card" onclick="trackClick('product_015')">
+      <div class="thumb">
+        <div class="num-badge">#015</div>
+        <div class="thumb-placeholder">015</div>
+      </div>
+      <div class="body">
+        <div class="name">아티스트리 블러쉬 브러쉬</div>
+        <div class="cat">뷰티</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/014_이스프링_물병_1700ml.html" class="product-card" onclick="trackClick('product_014')">
+      <div class="thumb">
+        <div class="num-badge">#014</div>
+        <div class="thumb-placeholder">014</div>
+      </div>
+      <div class="body">
+        <div class="name">이스프링 물병 1700ml</div>
+        <div class="cat">홈</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/013_이스프링_정수기(전환기).html" class="product-card" onclick="trackClick('product_013')">
+      <div class="thumb">
+        <div class="num-badge">#013</div>
+        <div class="thumb-placeholder">013</div>
+      </div>
+      <div class="body">
+        <div class="name">이스프링 정수기(전환기)</div>
+        <div class="cat">홈</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/012_암웨이_퀸_인덕션_레인지_(2026).html" class="product-card" onclick="trackClick('product_012')">
+      <div class="thumb">
+        <div class="num-badge">#012</div>
+        <div class="thumb-placeholder">012</div>
+      </div>
+      <div class="body">
+        <div class="name">암웨이 퀸 인덕션 레인지 (2026)</div>
+        <div class="cat">홈</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/011_까페드다몬_디카페인_-_아라비카_프로틴믹스_(17.4g_x_15개입).html" class="product-card" onclick="trackClick('product_011')">
+      <div class="thumb">
+        <div class="num-badge">#011</div>
+        <div class="thumb-placeholder">011</div>
+      </div>
+      <div class="body">
+        <div class="name">까페드다몬 디카페인 - 아라비카 프로틴믹스 (17.4g x 15개입)</div>
+        <div class="cat">기타</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/010_정기품_초사리_곱창_돌김_(30g_x_3개입).html" class="product-card" onclick="trackClick('product_010')">
+      <div class="thumb">
+        <div class="num-badge">#010</div>
+        <div class="thumb-placeholder">010</div>
+      </div>
+      <div class="body">
+        <div class="name">정기품 초사리 곱창 돌김 (30g x 3개입)</div>
+        <div class="cat">기타</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/009_노브스갈라_알룰로스_세트.html" class="product-card" onclick="trackClick('product_009')">
+      <div class="thumb">
+        <div class="num-badge">#009</div>
+        <div class="thumb-placeholder">009</div>
+      </div>
+      <div class="body">
+        <div class="name">노브스갈라 알룰로스 세트</div>
+        <div class="cat">기타</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/008_정기품_초사리_곱창_돌김_(30g_x_3개입).html" class="product-card" onclick="trackClick('product_008')">
+      <div class="thumb">
+        <div class="num-badge">#008</div>
+        <div class="thumb-placeholder">008</div>
+      </div>
+      <div class="body">
+        <div class="name">정기품 초사리 곱창 돌김 (30g x 3개입)</div>
+        <div class="cat">기타</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/007_진품_백명란_세트.html" class="product-card" onclick="trackClick('product_007')">
+      <div class="thumb">
+        <div class="num-badge">#007</div>
+        <div class="thumb-placeholder">007</div>
+      </div>
+      <div class="body">
+        <div class="name">진품 백명란 세트</div>
+        <div class="cat">기타</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/006_노브스갈라_올리브유_통살_참치_세트.html" class="product-card" onclick="trackClick('product_006')">
+      <div class="thumb">
+        <div class="num-badge">#006</div>
+        <div class="thumb-placeholder">006</div>
+      </div>
+      <div class="body">
+        <div class="name">노브스갈라 올리브유 통살 참치 세트</div>
+        <div class="cat">기타</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/005_리플렉서_1699.html" class="product-card" onclick="trackClick('product_005')">
+      <div class="thumb">
+        <div class="num-badge">#005</div>
+        <div class="thumb-placeholder">005</div>
+      </div>
+      <div class="body">
+        <div class="name">리플렉서 1699</div>
+        <div class="cat">건강</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/004_리플렉서_1699_스마트페이.html" class="product-card" onclick="trackClick('product_004')">
+      <div class="thumb">
+        <div class="num-badge">#004</div>
+        <div class="thumb-placeholder">004</div>
+      </div>
+      <div class="body">
+        <div class="name">리플렉서 1699 스마트페이</div>
+        <div class="cat">건강</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/003_옵티미스트.html" class="product-card" onclick="trackClick('product_003')">
+      <div class="thumb">
+        <div class="num-badge">#003</div>
+        <div class="thumb-placeholder">003</div>
+      </div>
+      <div class="body">
+        <div class="name">옵티미스트</div>
+        <div class="cat">건강</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/002_옵티미스트_워셔블_필터.html" class="product-card" onclick="trackClick('product_002')">
+      <div class="thumb">
+        <div class="num-badge">#002</div>
+        <div class="thumb-placeholder">002</div>
+      </div>
+      <div class="body">
+        <div class="name">옵티미스트 워셔블 필터</div>
+        <div class="cat">건강</div>
+        
+      </div>
+    </a>
+
+    <a href="pages/001_아세로라_C_(300정,_100일분).html" class="product-card" onclick="trackClick('product_001')">
+      <div class="thumb">
+        <div class="num-badge">#001</div>
+        <div class="thumb-placeholder">001</div>
+      </div>
+      <div class="body">
+        <div class="name">아세로라 C (300정, 100일분)</div>
+        <div class="cat">건강</div>
+        
+      </div>
+    </a></div>
+
+  <footer>
+    ※ 저는 한국암웨이 ABO(회원번호 7027465675)입니다.<br>
+    본 페이지는 개인 경험을 공유하는 후기 페이지입니다.<br>
+    구매·소득에는 개인차가 있을 수 있습니다.<br>
+    <span style="opacity: 0.7">
+      Total 35 products · Updated 2026-10-19 08:13
+    </span>
+  </footer>
+
+</div>
+
+<div class="toast" id="toast">복사됐어요! 🎉</div>
+
+<script>
+const SPONSOR = "7027465675";
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+async function copyToClipboard(text) {
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+      return true;
+    }
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.focus(); ta.select();
+    const ok = document.execCommand('copy');
+    document.body.removeChild(ta);
+    return ok;
+  } catch (e) { return false; }
+}
+
+async function copySponsor() {
+  const ok = await copyToClipboard(SPONSOR);
+  if (ok) {
+    showToast('후원자 번호 복사됐어요! 🎉');
+    trackClick('sponsor_copy_bio');
+  } else {
+    showToast('복사 실패 — 번호를 손으로 선택해 복사해주세요');
+  }
+}
+
+function trackClick(action) {
+  try {
+    const key = 'jayabo_clicks';
+    const now = new Date().toISOString();
+    const raw = localStorage.getItem(key);
+    const arr = raw ? JSON.parse(raw) : [];
+    arr.push({
+      page: 'bio_link',
+      action: action,
+      ts: now,
+      ua: navigator.userAgent.substring(0, 60),
+    });
+    localStorage.setItem(key, JSON.stringify(arr.slice(-100)));
+  } catch (e) { /* silent */ }
+}
+
+trackClick('view');
+</script>
+
+</body>
+</html>
