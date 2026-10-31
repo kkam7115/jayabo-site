@@ -75,6 +75,16 @@
     <p>후원자 준영이 · 카테고리별 검증한 인기 상품</p>
   </div>
 
+  <!-- 2026-10-31: 처음이신가요? 가이드 배너 -->
+  <a href="pages/guide_amway_101.html" class="first-time-banner" style="display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#2d9d78,#26c281);color:#fff;padding:16px 20px;border-radius:14px;text-decoration:none;margin:16px 0;box-shadow:0 4px 12px rgba(45,157,120,0.25);transition:transform 0.15s">
+    <div style="font-size:28px">👋</div>
+    <div style="flex:1">
+      <div style="font-weight:800;font-size:16px">처음 오셨나요?</div>
+      <div style="font-size:13px;opacity:0.95;margin-top:2px">암웨이 기본 안내 · 회원가입 · 구매 방법 가이드</div>
+    </div>
+    <div style="font-size:18px">→</div>
+  </a>
+
   <div class="search-box">
     <input id="search-input" type="text" placeholder="상품명 검색..." oninput="applyFilter()">
   </div>
@@ -167,5 +177,11 @@ document.querySelectorAll('.filter-chip').forEach(c => {
 });
 loadProducts();
 </script>
+
+<!-- 2026-10-31: 플로팅 카톡 상담 CTA -->
+<a href="{{KAKAO_OPENCHAT_URL}}" target="_blank" rel="noopener" style="position:fixed;bottom:20px;right:20px;z-index:999;background:#fee500;color:#191919;padding:14px 20px;border-radius:999px;text-decoration:none;font-weight:700;font-size:15px;box-shadow:0 6px 18px rgba(0,0,0,0.15);display:flex;align-items:center;gap:8px" onclick="try{trackClick&&trackClick('kakao_floating')}catch(e){}">
+  💬 카톡 상담
+</a>
+
 </body>
 </html>
