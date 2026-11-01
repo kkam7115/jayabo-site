@@ -359,16 +359,6 @@ footer {
   </div>
 
   <!-- 3섹션 네비 (상품·부업·블로그) -->
-  <!-- 2026-10-31: 처음이신가요? 가이드 배너 (Bio Link용) -->
-  <a href="/pages/guide_amway_101.html" style="display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#2d9d78,#26c281);color:#fff;padding:14px 18px;border-radius:14px;text-decoration:none;margin-bottom:14px;box-shadow:0 3px 10px rgba(45,157,120,0.2)">
-    <div style="font-size:24px">👋</div>
-    <div style="flex:1">
-      <div style="font-weight:800;font-size:15px">처음 오셨나요?</div>
-      <div style="font-size:12px;opacity:0.92;margin-top:2px">회원가입·구매 가이드</div>
-    </div>
-    <div style="font-size:16px">→</div>
-  </a>
-
   <div class="section-nav">
     <a href="#products" class="products" onclick="trackClick('nav_products')">
       <span class="icon">🛒</span>
@@ -388,7 +378,7 @@ footer {
   </div>
 
   <!-- 상단 카톡 CTA -->
-  <a href="{{KAKAO_OPENCHAT_URL}}" class="cta-kakao-top" onclick="trackClick('kakao_top')">
+  <a href="https://open.kakao.com/o/YOUR_OPENCHAT" class="cta-kakao-top" onclick="trackClick('kakao_top')">
     💬 카톡 오픈채팅으로 상담·간편가입
     <small>번호 알려주시면 자동 가입 링크 발송 (몇 초 완료)</small>
   </a>
@@ -397,6 +387,18 @@ footer {
   <!-- 상품 목록 -->
   <div class="section-title">📋 추천 상품 카탈로그</div>
   <div class="product-list">
+    <a href="pages/036_환승에어_엣모스피어_블루_필터_패키지.html" class="product-card" onclick="trackClick('product_036')">
+      <div class="thumb">
+        <div class="num-badge">#036</div>
+        <div class="thumb-placeholder">036</div>
+      </div>
+      <div class="body">
+        <div class="name">환승에어 엣모스피어 블루 필터 패키지</div>
+        <div class="cat">홈</div>
+        
+      </div>
+    </a>
+
     <a href="pages/035_환승에어_엣모스피어_필터_패키지.html" class="product-card" onclick="trackClick('product_035')">
       <div class="thumb">
         <div class="num-badge">#035</div>
@@ -822,7 +824,7 @@ footer {
     본 페이지는 개인 경험을 공유하는 후기 페이지입니다.<br>
     구매·소득에는 개인차가 있을 수 있습니다.<br>
     <span style="opacity: 0.7">
-      Total 35 products · Updated 2026-10-19 08:13
+      Total 36 products · Updated 2026-11-02 08:00
     </span>
   </footer>
 
