@@ -342,6 +342,15 @@
     "sub_category": ""
   },
   {
+    "catalog": "034",
+    "name": "옵티미스트 안심촉촉 프로모션",
+    "price": 450000,
+    "image": "assets/034.jpg",
+    "page": "pages/034_옵티미스트_안심촉촉_프로모션.html",
+    "category": "건강",
+    "sub_category": "optimist"
+  },
+  {
     "catalog": "035",
     "name": "옵티미스트 안심촉촉 프로모션",
     "price": 450000,
@@ -349,5 +358,23 @@
     "page": "pages/035_옵티미스트_안심촉촉_프로모션.html",
     "category": "건강",
     "sub_category": "optimist"
+  },
+  {
+    "catalog": "035",
+    "name": "환승에어 엣모스피어 필터 패키지",
+    "price": 334000,
+    "image": "assets/035.jpg",
+    "page": "pages/035_환승에어_엣모스피어_필터_패키지.html",
+    "category": "홈",
+    "sub_category": "atmosphere"
+  },
+  {
+    "catalog": "036",
+    "name": "아티스트리 스킨 뉴트리션 오메가 드롭스 (20ml)",
+    "price": 68000,
+    "image": "assets/036.jpg",
+    "page": "pages/036_아티스트리_스킨_뉴트리션_오메가_드롭스_(20ml).html",
+    "category": "뷰티",
+    "sub_category": "skin-care-serum-ample"
   }
 ]
