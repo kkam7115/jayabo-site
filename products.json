@@ -150,7 +150,7 @@
     "image": "assets/018.jpg",
     "page": "pages/018_아보카도리얼_엑스트라버진_아보카도유_세트.html",
     "category": "기타",
-    "sub_category": "nobsgala"
+    "sub_category": ""
   },
   {
     "catalog": "019",
@@ -177,7 +177,7 @@
     "image": "assets/022.jpg",
     "page": "pages/022_아보카도리얼_엑스트라버진_아보카도유.html",
     "category": "기타",
-    "sub_category": "nobsgala"
+    "sub_category": ""
   },
   {
     "catalog": "023",
@@ -186,7 +186,7 @@
     "image": "assets/023.jpg",
     "page": "pages/023_정기품_우리바다_손질삼치_(1.2kg).html",
     "category": "기타",
-    "sub_category": "junggipoom"
+    "sub_category": ""
   },
   {
     "catalog": "024",
@@ -195,7 +195,7 @@
     "image": "assets/024.jpg",
     "page": "pages/024_원포원_추석_프로모션_-_까페드다몬.html",
     "category": "기타",
-    "sub_category": "cafe-de-damon"
+    "sub_category": ""
   },
   {
     "catalog": "025",
@@ -203,8 +203,8 @@
     "price": 72000,
     "image": "assets/025.jpg",
     "page": "pages/025_디쉬_드랍스_식기세척기_세제_헤리티지_프로모션.html",
-    "category": "홈",
-    "sub_category": "kitchen-care"
+    "category": "기타",
+    "sub_category": ""
   },
   {
     "catalog": "026",
@@ -212,8 +212,8 @@
     "price": 1800,
     "image": "assets/026.jpg",
     "page": "pages/026_뉴트리라이트_쇼핑백(대).html",
-    "category": "건강",
-    "sub_category": "nutrition-sales-aid"
+    "category": "기타",
+    "sub_category": ""
   },
   {
     "catalog": "026",
@@ -230,8 +230,8 @@
     "price": 45000,
     "image": "assets/027.jpg",
     "page": "pages/027_앨로케어_(180정,_30일분).html",
-    "category": "건강",
-    "sub_category": "functional"
+    "category": "기타",
+    "sub_category": ""
   },
   {
     "catalog": "027",
@@ -258,7 +258,7 @@
     "image": "assets/028.jpg",
     "page": "pages/028_정기품_발효_어진미_세트.html",
     "category": "기타",
-    "sub_category": "junggipoom"
+    "sub_category": ""
   },
   {
     "catalog": "029",
@@ -276,7 +276,7 @@
     "image": "assets/029.jpg",
     "page": "pages/029_정기품_자연담은_아카시아꿀_세트.html",
     "category": "기타",
-    "sub_category": "junggipoom"
+    "sub_category": ""
   },
   {
     "catalog": "030",
@@ -376,5 +376,59 @@
     "page": "pages/036_아티스트리_스킨_뉴트리션_오메가_드롭스_(20ml).html",
     "category": "뷰티",
     "sub_category": "skin-care-serum-ample"
+  },
+  {
+    "catalog": "036",
+    "name": "환승에어 엣모스피어 블루 필터 패키지",
+    "price": 220000,
+    "image": "assets/036.jpg",
+    "page": "pages/036_환승에어_엣모스피어_블루_필터_패키지.html",
+    "category": "홈",
+    "sub_category": "atmosphere-blue"
+  },
+  {
+    "catalog": "037",
+    "name": "환승에어 엣모스피어 스카이 필터 패키지",
+    "price": 349000,
+    "image": "assets/037.jpg",
+    "page": "pages/037_환승에어_엣모스피어_스카이_필터_패키지.html",
+    "category": "홈",
+    "sub_category": "atmosphere-sky"
+  },
+  {
+    "catalog": "038",
+    "name": "아티스트리 스킨 뉴트리션 오메가 드롭스 (20ml)",
+    "price": 68000,
+    "image": "assets/038.jpg",
+    "page": "pages/038_아티스트리_스킨_뉴트리션_오메가_드롭스_(20ml).html",
+    "category": "뷰티",
+    "sub_category": "skin-care-serum-ample"
+  },
+  {
+    "catalog": "039",
+    "name": "아티스트리 스킨 뉴트리션 오메가 + 프로틴 보습장벽 솔루션 프로모션",
+    "price": 137000,
+    "image": "assets/039.jpg",
+    "page": "pages/039_아티스트리_스킨_뉴트리션_오메가_+_프로틴_보습장벽_솔루션_프로모션.html",
+    "category": "뷰티",
+    "sub_category": "skin-care-serum-ample"
+  },
+  {
+    "catalog": "040",
+    "name": "글루코헬스 (180정, 90일분)",
+    "price": 94000,
+    "image": "assets/040.jpg",
+    "page": "pages/040_글루코헬스_(180정,_90일분).html",
+    "category": "건강",
+    "sub_category": "functional"
+  },
+  {
+    "catalog": "041",
+    "name": "글루코헬스 (180정, 90일분)",
+    "price": 94000,
+    "image": "assets/041.jpg",
+    "page": "pages/041_글루코헬스_(180정,_90일분).html",
+    "category": "건강",
+    "sub_category": "functional"
   }
 ]
