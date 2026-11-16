@@ -15,7 +15,7 @@
   };
   const cls = (t) => isActive(t) ? 'active' : '';
 
-  const KAKAO_URL = 'https://open.kakao.com/o/joinabo'; // 임시 · 실제 URL 나중에 교체
+  const KAKAO_URL = 'https://pf.kakao.com/_xaxbUNX/chat'; // 암웨이 JAY 카카오 채널 1:1 채팅
   const NAVER_BLOG_URL = 'https://blog.naver.com/bbaamm22';
 
   // ===== 헤더 =====
