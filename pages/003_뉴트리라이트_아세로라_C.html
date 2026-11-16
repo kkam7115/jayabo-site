@@ -405,7 +405,7 @@ footer {
     🛒 지금 바로 구매하기
     <small>탭 시 후원자 번호 자동 복사 + 암웨이 이동</small>
   </a>
-  <a href="https://open.kakao.com/o/YOUR_OPENCHAT" class="cta cta-kakao" onclick="trackClick('kakao')">
+  <a href="https://pf.kakao.com/_xaxbUNX/chat" class="cta cta-kakao" onclick="trackClick('kakao')">
     💬 카톡으로 도움받기
     <small>개별 상담·간편가입 도움</small>
   </a>
@@ -463,7 +463,7 @@ footer {
 <!-- Sticky CTA -->
 <div class="sticky-cta">
   <button class="top" id="stickyTop" onclick="window.scrollTo({top:0, behavior:'smooth'})" title="맨 위로">↑</button>
-  <a href="https://open.kakao.com/o/YOUR_OPENCHAT" class="kakao" onclick="trackClick('sticky_kakao')">
+  <a href="https://pf.kakao.com/_xaxbUNX/chat" class="kakao" onclick="trackClick('sticky_kakao')">
     💬 카톡 상담
   </a>
 </div>
@@ -566,7 +566,7 @@ document.addEventListener('mouseleave', (e) => {
     exitShown = true;
     try { localStorage.setItem('exit_shown_' + '3', '1'); } catch (e) {}
     if (confirm('잠깐! 궁금하신 점이 있으시면 카톡 상담 드릴게요.\n카톡 상담으로 이동하시겠어요?')) {
-      window.location.href = 'https://open.kakao.com/o/YOUR_OPENCHAT';
+      window.location.href = 'https://pf.kakao.com/_xaxbUNX/chat';
       trackClick('exit_intent_kakao');
     } else {
       trackClick('exit_intent_dismissed');
