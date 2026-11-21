@@ -1,7 +1,10 @@
 // JAY ABO · 공통 헤더/푸터 자동 삽입
 (function () {
   const BASE = window.JAY_BASE || '/jayabo-site';
-  const SPONSOR_NUM = '7027465675';
+  // 2026-11-21: 암웨이 규정상 후원자 번호 공개 페이지 노출 금지
+  // 번호는 JS 상수로만 유지 (클릭 시 클립보드 복사 전용) · HTML 에 렌더링 X
+  const SPONSOR_NUM_FOR_COPY = '7027465675';
+  const SPONSOR_NUM = '';  // 레거시 템플릿 치환용 · 화면엔 빈 값
 
   // 현재 경로에 따라 · 어느 메뉴가 active인지
   const path = location.pathname;
@@ -45,7 +48,7 @@
           <p style="font-size:13px;line-height:1.7;color:#8a92a3">
             뉴트리라이트·아티스트리 등 · 검증된 상품을 · 후원자를 통해 안심 구매.
           </p>
-          <div class="jay-sponsor-badge">후원자 · ${SPONSOR_NUM}</div>
+          <a href="javascript:void(0)" onclick="(window.copySponsorAndGoKakao||function(){window.location.href='https://pf.kakao.com/_xaxbUNX/chat'})(); return false;" class="jay-sponsor-badge" style="text-decoration:none;color:inherit;cursor:pointer">💬 카톡 상담 (번호 자동 복사)</a>
         </div>
         <div>
           <h4>상품</h4>
@@ -74,7 +77,7 @@
         </div>
       </div>
       <div class="jay-footer-bottom">
-        JAY ABO · 후원자 준영 · 회원가입 시 후원자 번호 <strong style="color:#ff9d75">${SPONSOR_NUM}</strong> 입력<br>
+        JAY ABO · 회원가입·후원자 안내는 <a href="javascript:void(0)" onclick="(window.copySponsorAndGoKakao||function(){window.location.href='https://pf.kakao.com/_xaxbUNX/chat'})(); return false;" style="color:#ff9d75;cursor:pointer">카카오 채널 「암웨이 JAY」</a>에서 개별 상담<br>
         &copy; ${new Date().getFullYear()} JAY ABO. 정식 등록 AmwayBusinessOwner.
       </div>
     </div>
