@@ -235,6 +235,8 @@ async function copySponsor {
  try { localStorage.setItem('sponsor_number', SPONSOR); } catch (e) {}
 }
 </script>
+
+
 <!-- SPONSOR_CLICK_COPY_INJECTED_2026-11-21 -->
 <script>
 (function() {
@@ -296,24 +298,37 @@ async function copySponsor {
   // 기존 copySponsor override (기존 UI 가 호출해도 신규 로직 실행)
   window.copySponsor = copySponsorAndGoKakao;
 
-  // 자동 바인딩: cta-kakao 클래스 또는 sponsor-strip 클래스 요소에 click 핸들러 주입
-  // (기존 href 가 직접 kakao 로 가는 경우만 override · 다른 링크는 건드리지 않음)
-  document.addEventListener('DOMContentLoaded', () => {
-    const selectors = ['.cta-kakao', '.sponsor-strip', '.sponsor-card', '.sponsor-inline', '.sticky-cta .kakao', '.cta-kakao-top', '.jay-cta-kakao'];
-    selectors.forEach(sel => {
-      document.querySelectorAll(sel).forEach(el => {
-        // 이미 copySponsorAndGoKakao 를 호출하는 요소는 건드리지 않음
-        const onclick = el.getAttribute('onclick') || '';
-        if (onclick.includes('copySponsorAndGoKakao')) return;
-        // kakao URL 이 href 로 걸려있는 경우만 override
-        const href = (el.getAttribute('href') || '').trim();
-        if (href.includes('pf.kakao.com') || href.includes('open.kakao.com') || href === 'javascript:void(0)' || !href) {
-          el.setAttribute('onclick', 'copySponsorAndGoKakao(); return false;');
-          if (el.tagName === 'A') el.setAttribute('href', 'javascript:void(0)');
-        }
-      });
+  // 자동 바인딩: 모든 카카오 링크에 click-copy 핸들러 주입
+  // catch-all 전략: href 에 kakao URL 포함된 모든 <a> 요소 (class 상관없이)
+  function _bindAllKakaoLinks() {
+    const links = document.querySelectorAll('a[href*="kakao.com"], a[href*="pf.kakao"], a[href*="open.kakao"], a[onclick*="kakao"], .cta-kakao, .sponsor-strip, .sponsor-card, .sponsor-inline, .jay-cta-kakao, .sticky-cta a, .cta-kakao-top, .cta-floating');
+    links.forEach(el => {
+      const onclick = el.getAttribute('onclick') || '';
+      if (onclick.includes('copySponsorAndGoKakao')) return;  // 이미 바인딩됨
+      const href = (el.getAttribute('href') || '').trim();
+      if (href.includes('kakao.com') || href === 'javascript:void(0)' || !href || onclick.includes('kakao')) {
+        el.setAttribute('onclick', 'copySponsorAndGoKakao(); return false;');
+        if (el.tagName === 'A') el.setAttribute('href', 'javascript:void(0)');
+      }
     });
-  });
+  }
+
+  // DOMContentLoaded 시 1회 + MutationObserver 로 동적 삽입된 요소도 catch (layout/site.js 등)
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', _bindAllKakaoLinks);
+  } else {
+    _bindAllKakaoLinks();
+  }
+  // DOM 변화 감지 → 동적 삽입된 header/footer 등 포함 (지연 바인딩)
+  try {
+    const observer = new MutationObserver(() => _bindAllKakaoLinks());
+    observer.observe(document.body, {childList: true, subtree: true});
+    // 10초 뒤엔 observer 끔 (성능 보호)
+    setTimeout(() => observer.disconnect(), 10000);
+  } catch(e) {}
+  // 안전망 · 1초, 3초 후 재바인딩 (observer 가 놓친 경우 대비)
+  setTimeout(_bindAllKakaoLinks, 1000);
+  setTimeout(_bindAllKakaoLinks, 3000);
 })();
 </script>
 
